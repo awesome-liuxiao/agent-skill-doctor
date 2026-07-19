@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-skill-doctor.dev/schemas/v1/functional-benchmark.schema.json",
+  "title": "Public functional benchmark manifest",
+  "type": "object",
+  "required": ["schema_version", "corpus_version", "license", "scenarios"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "corpus_version": {"type": "string", "minLength": 1},
+    "license": {"const": "Apache-2.0"},
+    "scenarios": {
+      "type": "array",
+      "minItems": 8,
+      "items": {
+        "type": "object",
+        "required": ["id", "category", "fixture", "mutation", "expected", "pytest_node_id"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "category": {"type": "string", "minLength": 1},
+          "fixture": {"type": "string", "minLength": 1},
+          "mutation": {"type": "string", "minLength": 1},
+          "expected": {"type": "string", "minLength": 1},
+          "pytest_node_id": {"type": "string", "pattern": "^tests/test_public_functional_benchmark\\.py::test_public_functional_"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

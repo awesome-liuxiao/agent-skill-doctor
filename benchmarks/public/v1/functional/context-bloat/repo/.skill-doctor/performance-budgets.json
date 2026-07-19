@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "skills": {
+    "context-bloat": {"max_instruction_tokens": 25}
+  }
+}

@@ -1,0 +1,69 @@
+name: protected-held-out-evaluation
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_ref:
+        description: Exact tag or commit to evaluate
+        required: true
+        type: string
+      release_version:
+        description: Release version recorded in the result
+        required: true
+        type: string
+      rotation_id:
+        description: Unique identifier for this corpus rotation
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+  attestations: write
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    environment: stable-release-held-out
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.release_ref }}
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Bind checked-out evaluator to attested workflow source
+        run: >-
+          python scripts/verify_workflow_source.py
+          --release-ref "${{ inputs.release_ref }}"
+      - id: source
+        name: Resolve evaluated source commit
+        shell: bash
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - run: python -m pip install --requirement requirements-dev.lock
+      - name: Extract bounded private corpus
+        env:
+          HELD_OUT_CORPUS_TAR_GZ_B64: ${{ secrets.HELD_OUT_CORPUS_TAR_GZ_B64 }}
+        run: >-
+          python scripts/extract_held_out.py
+          held-out-corpus.tar.gz .held-out
+          --base64-env HELD_OUT_CORPUS_TAR_GZ_B64
+      - name: Evaluate without publishing cases
+        run: >-
+          python scripts/run_held_out.py
+          --manifest .held-out/manifest.json
+          --public-manifest benchmarks/public/v1/manifest.json
+          --release-version "${{ inputs.release_version }}"
+          --rotation-id "${{ inputs.rotation_id }}"
+          --evaluator-commit "${{ steps.source.outputs.sha }}"
+          --output held-out-result.json
+      - uses: actions/attest-build-provenance@v3
+        with:
+          subject-path: held-out-result.json
+      - uses: actions/upload-artifact@v6
+        with:
+          name: held-out-result
+          path: held-out-result.json
+          if-no-files-found: error
+          retention-days: 14

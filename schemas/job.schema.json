@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-skill-doctor.dev/schemas/v1/job.schema.json",
+  "title": "Job",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "created_at",
+    "updated_at",
+    "status",
+    "operation",
+    "input_path",
+    "options",
+    "attempt",
+    "cancel_requested"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "id": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "status": {"enum": ["queued", "running", "complete", "failed", "cancelled"]},
+    "operation": {"type": "string"},
+    "input_path": {"type": "string"},
+    "options": {"type": "object"},
+    "attempt": {"type": "integer", "minimum": 0},
+    "cancel_requested": {"type": "boolean"},
+    "snapshot_hash": {"type": ["string", "null"]},
+    "report_path": {"type": ["string", "null"]},
+    "result_state": {
+      "type": ["string", "null"],
+      "enum": [
+        "confirmed_issues",
+        "no_confirmed_issues",
+        "indeterminate",
+        "analysis_incomplete",
+        "cancelled",
+        "internal_error",
+        null
+      ]
+    },
+    "error": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

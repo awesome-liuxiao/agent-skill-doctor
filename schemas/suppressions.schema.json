@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-skill-doctor.dev/schemas/v1/suppressions.schema.json",
+  "title": "Auditable finding suppressions",
+  "type": "object",
+  "required": ["version", "suppressions"],
+  "properties": {
+    "version": {"const": 1},
+    "suppressions": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {
+        "type": "object",
+        "required": [
+          "id", "rule_id", "reason", "created_at", "expires_at",
+          "snapshot_hash", "ruleset_version"
+        ],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "rule_id": {"type": "string", "minLength": 1},
+          "finding_id": {"type": "string", "minLength": 1},
+          "reason": {"type": "string", "minLength": 1},
+          "created_at": {"type": "string", "format": "date-time"},
+          "expires_at": {"type": "string", "format": "date-time"},
+          "snapshot_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "ruleset_version": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

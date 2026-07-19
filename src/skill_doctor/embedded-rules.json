@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "ruleset_version": "2026-07-16.1",
+  "mode": "embedded_offline_baseline",
+  "implementation": "skill_doctor.analysis",
+  "network_required": false
+}

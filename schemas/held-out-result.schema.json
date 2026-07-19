@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-skill-doctor.dev/schemas/v1/held-out-result.schema.json",
+  "title": "Rotating held-out benchmark result",
+  "type": "object",
+  "required": ["schema_version", "corpus_version", "release_version", "rotation_id", "rotating", "evaluated_at", "evaluator_commit", "case_count", "disjoint_from_public_sha256", "metrics"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "corpus_version": {"type": "string", "pattern": "^held-out-"},
+    "release_version": {"type": "string", "minLength": 1},
+    "rotation_id": {"type": "string", "minLength": 1},
+    "rotating": {"const": true},
+    "evaluated_at": {"type": "string", "format": "date-time"},
+    "evaluator_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "case_count": {"type": "integer", "minimum": 1},
+    "disjoint_from_public_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "metrics": {
+      "type": "object",
+      "required": ["highlighted_precision", "expected_finding_recall", "benign_false_positive_rate", "static_completion_rate"],
+      "properties": {
+        "highlighted_precision": {"$ref": "#/$defs/ratio"},
+        "expected_finding_recall": {"$ref": "#/$defs/ratio"},
+        "benign_false_positive_rate": {"$ref": "#/$defs/ratio"},
+        "static_completion_rate": {"$ref": "#/$defs/ratio"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "ratio": {
+      "type": "object",
+      "required": ["numerator", "denominator", "value", "available"],
+      "properties": {
+        "numerator": {"type": "integer", "minimum": 0},
+        "denominator": {"type": "integer", "minimum": 1},
+        "value": {"type": "number", "minimum": 0, "maximum": 1},
+        "available": {"const": true}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

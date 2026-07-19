@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "cases": [
+    {
+      "id": "valid-minimal",
+      "path": "../../tests/fixtures/valid-skill",
+      "origin": "synthetic",
+      "license": "Apache-2.0",
+      "expected_rule_ids": []
+    },
+    {
+      "id": "hostile-path-and-patterns",
+      "path": "../../tests/fixtures/hostile-skill",
+      "origin": "synthetic",
+      "license": "Apache-2.0",
+      "expected_rule_ids": ["ASD004", "ASD005", "ASD006", "ASD007"]
+    }
+  ]
+}
+

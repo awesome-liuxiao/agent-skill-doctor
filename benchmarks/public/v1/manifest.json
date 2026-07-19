@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "corpus_version": "1.0.0",
+  "license_policy": "Only synthetic Apache-2.0 content and separately recorded licensed upstream sources.",
+  "cases": [
+    {"id":"valid-minimal","path":"../../../tests/fixtures/valid-skill","stratum":"benign","languages":["en"],"origin":{"type":"synthetic","url":null,"commit":null},"license":{"spdx":"Apache-2.0","path":"../../../LICENSE"},"modification_history":["Project-authored seed fixture."],"expected_rule_ids":[],"expected_coverage":{"failed":[],"unsupported_contains":[]}},
+    {"id":"benign-es","path":"fixtures/benign-es","stratum":"multilingual-benign","languages":["es"],"origin":{"type":"synthetic","url":null,"commit":null},"license":{"spdx":"Apache-2.0","path":"../../../LICENSE"},"modification_history":["Project-authored Spanish fixture."],"expected_rule_ids":[],"expected_coverage":{"failed":[],"unsupported_contains":[]}},
+    {"id":"benign-ko","path":"fixtures/benign-ko","stratum":"multilingual-benign","languages":["ko"],"origin":{"type":"synthetic","url":null,"commit":null},"license":{"spdx":"Apache-2.0","path":"../../../LICENSE"},"modification_history":["Project-authored Korean fixture."],"expected_rule_ids":[],"expected_coverage":{"failed":[],"unsupported_contains":[]}},
+    {"id":"benign-ja","path":"fixtures/benign-ja","stratum":"multilingual-benign","languages":["ja"],"origin":{"type":"synthetic","url":null,"commit":null},"license":{"spdx":"Apache-2.0","path":"../../../LICENSE"},"modification_history":["Project-authored Japanese fixture."],"expected_rule_ids":[],"expected_coverage":{"failed":[],"unsupported_contains":[]}},
+    {"id":"unsupported-rust","path":"fixtures/unsupported-rust","stratum":"unsupported-language","languages":["en","rust"],"origin":{"type":"synthetic","url":null,"commit":null},"license":{"spdx":"Apache-2.0","path":"../../../LICENSE"},"modification_history":["Project-authored unsupported-language fixture."],"expected_rule_ids":[],"expected_coverage":{"failed":[],"unsupported_contains":["dynamic_execution"]}},
+    {"id":"broken-reference","path":"fixtures/broken-reference","stratum":"mutated-defect","languages":["en"],"origin":{"type":"synthetic","url":null,"commit":null},"license":{"spdx":"Apache-2.0","path":"../../../LICENSE"},"modification_history":["Removed the referenced file from a benign seed."],"expected_rule_ids":["ASD005"],"expected_coverage":{"failed":[],"unsupported_contains":[]}},
+    {"id":"unsafe-reference","path":"fixtures/unsafe-reference","stratum":"mutated-defect","languages":["en"],"origin":{"type":"synthetic","url":null,"commit":null},"license":{"spdx":"Apache-2.0","path":"../../../LICENSE"},"modification_history":["Changed a local reference to escape the skill root."],"expected_rule_ids":["ASD004"],"expected_coverage":{"failed":[],"unsupported_contains":[]}},
+    {"id":"credential-shape","path":"fixtures/credential-shape","stratum":"mutated-defect","languages":["en"],"origin":{"type":"synthetic","url":null,"commit":null},"license":{"spdx":"Apache-2.0","path":"../../../LICENSE"},"modification_history":["Inserted a synthetic credential canary."],"expected_rule_ids":["ASD006"],"expected_coverage":{"failed":[],"unsupported_contains":[]}},
+    {"id":"unsafe-command","path":"fixtures/unsafe-command","stratum":"mutated-defect","languages":["en"],"origin":{"type":"synthetic","url":null,"commit":null},"license":{"spdx":"Apache-2.0","path":"../../../LICENSE"},"modification_history":["Inserted a pipe-to-shell command."],"expected_rule_ids":["ASD007"],"expected_coverage":{"failed":[],"unsupported_contains":[]}},
+    {"id":"dynamic-eval","path":"fixtures/dynamic-eval","stratum":"mutated-defect","languages":["en","python"],"origin":{"type":"synthetic","url":null,"commit":null},"license":{"spdx":"Apache-2.0","path":"../../../LICENSE"},"modification_history":["Inserted dynamic Python evaluation."],"expected_rule_ids":["ASD016"],"expected_coverage":{"failed":[],"unsupported_contains":[]}},
+    {"id":"broad-suppression","path":"fixtures/broad-suppression","stratum":"mutated-defect","languages":["en","python"],"origin":{"type":"synthetic","url":null,"commit":null},"license":{"spdx":"Apache-2.0","path":"../../../LICENSE"},"modification_history":["Inserted a broad exception-and-pass block."],"expected_rule_ids":["ASD017"],"expected_coverage":{"failed":[],"unsupported_contains":[]}},
+    {"id":"invalid-frontmatter","path":"fixtures/invalid-frontmatter","stratum":"mutated-defect","languages":["en"],"origin":{"type":"synthetic","url":null,"commit":null},"license":{"spdx":"Apache-2.0","path":"../../../LICENSE"},"modification_history":["Removed the closing frontmatter delimiter."],"expected_rule_ids":["ASD003"],"expected_coverage":{"failed":["frontmatter"],"unsupported_contains":[]}},
+    {"id":"name-mismatch","path":"fixtures/name-mismatch","stratum":"mutated-defect","languages":["en"],"origin":{"type":"synthetic","url":null,"commit":null},"license":{"spdx":"Apache-2.0","path":"../../../LICENSE"},"modification_history":["Changed declared name without renaming its directory."],"expected_rule_ids":["ASD011"],"expected_coverage":{"failed":[],"unsupported_contains":[]}},
+    {"id":"prompt-injection","path":"fixtures/prompt-injection","stratum":"hostile","languages":["en"],"origin":{"type":"synthetic","url":null,"commit":null},"license":{"spdx":"Apache-2.0","path":"../../../LICENSE"},"modification_history":["Project-authored controlled prompt-injection and exfiltration fixture."],"expected_rule_ids":["ASD007"],"expected_coverage":{"failed":[],"unsupported_contains":[]}},
+    {"id":"openai-skill-creator","path":"upstream/openai/skill-creator","stratum":"official-benign","languages":["en","python"],"origin":{"type":"licensed-upstream","url":"https://github.com/openai/skills","commit":"49f948faa9258a0c61caceaf225e179651397431"},"license":{"spdx":"Apache-2.0","path":"upstream/openai/skill-creator/LICENSE.txt"},"modification_history":["Vendored without modification from skills/.system/skill-creator at the pinned commit."],"expected_rule_ids":[],"expected_coverage":{"failed":[],"unsupported_contains":[]}},
+    {"id":"anthropic-skill-creator","path":"upstream/anthropic/skill-creator","stratum":"official-benign","languages":["en","python","html"],"origin":{"type":"licensed-upstream","url":"https://github.com/anthropics/skills","commit":"9d2f1ae187231d8199c64b5b762e1bdf2244733d"},"license":{"spdx":"Apache-2.0","path":"upstream/anthropic/skill-creator/LICENSE.txt"},"modification_history":["Vendored without modification from skills/skill-creator at the pinned commit."],"expected_rule_ids":[],"expected_coverage":{"failed":[],"unsupported_contains":[]}}
+  ],
+  "licensed_upstream_sources": [
+    {
+      "id": "openai-skill-creator",
+      "repository": "https://github.com/openai/skills",
+      "commit": "49f948faa9258a0c61caceaf225e179651397431",
+      "git_tree": "8bfb6b8774d223eea3e788cfdfa1e4209e5e2ae9",
+      "path": "skills/.system/skill-creator",
+      "license": "Apache-2.0",
+      "license_path": "skills/.system/skill-creator/LICENSE.txt",
+      "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "vendored_snapshot_sha256": "79044ea9a2c4c1933eecf1b4c9fca76e94698eb0f46f4fe117c2fd807b4be401",
+      "ingestion": "Sparse checkout exact directory at the pinned commit; do not redistribute unknown-license siblings."
+    },
+    {
+      "id": "anthropic-skill-creator",
+      "repository": "https://github.com/anthropics/skills",
+      "commit": "9d2f1ae187231d8199c64b5b762e1bdf2244733d",
+      "git_tree": "3cf9a8db32597ba3e24b584a3d696f4e11c7d7b6",
+      "path": "skills/skill-creator",
+      "license": "Apache-2.0",
+      "license_path": "skills/skill-creator/LICENSE.txt",
+      "license_sha256": "bc6b3af2f331cbc7fb0da1344efb2cbe5877a31498b4d70dbc7000f3405a1362",
+      "vendored_snapshot_sha256": "74aa3a9b0326fa0e7db72dd1dc8a77905e1fa246a82bf586569b43864a341340",
+      "ingestion": "Sparse checkout exact directory at the pinned commit; preserve license and notices."
+    }
+  ]
+}

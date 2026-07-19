@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-skill-doctor.dev/schemas/v1/performance-budgets.schema.json",
+  "title": "Performance Budgets",
+  "type": "object",
+  "required": ["version"],
+  "properties": {
+    "version": {"const": 1},
+    "default": {"$ref": "#/$defs/budget"},
+    "skills": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/budget"}
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "budget": {
+      "type": "object",
+      "properties": {
+        "max_instruction_tokens": {"type": ["integer", "null"], "minimum": 0},
+        "max_catalog_tokens": {"type": ["integer", "null"], "minimum": 0},
+        "max_latency_ms": {"type": ["integer", "null"], "minimum": 0},
+        "max_setup_ms": {"type": ["integer", "null"], "minimum": 0},
+        "max_failure_rate": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "max_tool_calls": {"type": ["integer", "null"], "minimum": 0},
+        "max_model_turns": {"type": ["integer", "null"], "minimum": 0},
+        "max_cost_usd": {"type": ["number", "null"], "minimum": 0},
+        "max_workspace_bytes": {"type": ["integer", "null"], "minimum": 0},
+        "max_output_variants": {"type": ["integer", "null"], "minimum": 0}
+      },
+      "additionalProperties": false
+    }
+  }
+}

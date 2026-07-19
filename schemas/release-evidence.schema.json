@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-skill-doctor.dev/schemas/v1/release-evidence.schema.json",
+  "title": "Design partner and remediation release evidence",
+  "type": "object",
+  "required": ["schema_version", "release_version", "evaluator_commit", "recorded_at", "participant_count", "platforms", "runtime_contexts", "issue_count", "remediated_issue_count", "open_release_blockers", "remediation_started_at", "remediation_completed_at", "public_preview_completed", "signoff"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "release_version": {"type": "string", "minLength": 1},
+    "evaluator_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "recorded_at": {"type": "string", "format": "date-time"},
+    "participant_count": {"type": "integer", "minimum": 1},
+    "platforms": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["windows", "macos", "linux"]}},
+    "runtime_contexts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["platform", "runtime_version", "model"],
+        "properties": {
+          "platform": {"enum": ["codex", "claude"]},
+          "runtime_version": {"type": "string", "minLength": 1},
+          "model": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "issue_count": {"type": "integer", "minimum": 0},
+    "remediated_issue_count": {"type": "integer", "minimum": 0},
+    "open_release_blockers": {"type": "integer", "minimum": 0},
+    "remediation_started_at": {"type": "string", "format": "date-time"},
+    "remediation_completed_at": {"type": "string", "format": "date-time"},
+    "public_preview_completed": {"const": true},
+    "signoff": {"const": true}
+  },
+  "additionalProperties": false
+}

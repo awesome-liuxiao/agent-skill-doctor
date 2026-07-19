@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "skill": "fixture",
+  "x-owner": "agent-skill-doctor-public-benchmark",
+  "tests": [
+    {
+      "id": "creates-bounded-result",
+      "prompt": "Create the expected bounded result.",
+      "expected": {
+        "exit_code": 0,
+        "output_contains": ["complete"],
+        "files_exist": ["result.txt"],
+        "files_absent": ["secret.txt"]
+      },
+      "tags": ["quick", "public-benchmark"]
+    }
+  ]
+}

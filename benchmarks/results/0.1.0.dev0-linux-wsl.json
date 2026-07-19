@@ -1,0 +1,753 @@
+{
+  "causal": {
+    "metrics": {
+      "reproduction_consistency": {
+        "available": true,
+        "denominator": 10,
+        "numerator": 9,
+        "value": 0.9
+      },
+      "root_cause_accuracy": {
+        "available": true,
+        "denominator": 10,
+        "numerator": 10,
+        "value": 1.0
+      }
+    },
+    "scenario_count": 10,
+    "scenarios": [
+      {
+        "expected_confirmed": true,
+        "id": "confirmed-authored-counterfactual",
+        "observed_confirmed": true,
+        "passed": true
+      },
+      {
+        "expected_confirmed": false,
+        "id": "untrusted-inferred-a",
+        "observed_confirmed": false,
+        "passed": true
+      },
+      {
+        "expected_confirmed": false,
+        "id": "untrusted-inferred-b",
+        "observed_confirmed": false,
+        "passed": true
+      },
+      {
+        "expected_confirmed": false,
+        "id": "untrusted-inferred-c",
+        "observed_confirmed": false,
+        "passed": true
+      },
+      {
+        "expected_confirmed": false,
+        "id": "untrusted-inferred-d",
+        "observed_confirmed": false,
+        "passed": true
+      },
+      {
+        "expected_confirmed": false,
+        "id": "shared-runtime-failure",
+        "observed_confirmed": false,
+        "passed": true
+      },
+      {
+        "expected_confirmed": false,
+        "id": "skill-unrelated",
+        "observed_confirmed": false,
+        "passed": true
+      },
+      {
+        "expected_confirmed": false,
+        "id": "untrusted-inferred-e",
+        "observed_confirmed": false,
+        "passed": true
+      },
+      {
+        "expected_confirmed": false,
+        "id": "untrusted-inferred-f",
+        "observed_confirmed": false,
+        "passed": true
+      },
+      {
+        "expected_confirmed": false,
+        "id": "nondeterministic-treatment",
+        "observed_confirmed": false,
+        "passed": true
+      }
+    ],
+    "schema_version": "1.0.0"
+  },
+  "generated_at": "2026-07-16T05:12:27.046952Z",
+  "held_out": null,
+  "release": {
+    "gates": {
+      "benign_false_positive_at_most_2_percent": true,
+      "containment_and_canary_100_percent": true,
+      "fault_injection_100_percent": true,
+      "held_out_attestation_verified": false,
+      "no_known_critical_sandbox_escape": true,
+      "precision_at_least_95_percent": true,
+      "private_design_partner_alpha": false,
+      "public_functional_100_percent": true,
+      "public_preview_completed": false,
+      "release_evidence_attestation_verified": false,
+      "remediation_period_complete": false,
+      "reproduction_consistency_at_least_90_percent": true,
+      "root_cause_accuracy_at_least_90_percent": true,
+      "rotating_held_out_corpus": false,
+      "static_completion_at_least_99_5_percent": true,
+      "three_platform_validation": false
+    },
+    "limitations": [
+      "three_platform_validation",
+      "rotating_held_out_corpus",
+      "held_out_attestation_verified",
+      "private_design_partner_alpha",
+      "remediation_period_complete",
+      "public_preview_completed",
+      "release_evidence_attestation_verified"
+    ],
+    "maximum_release_stage": "public_preview_candidate",
+    "metrics": {
+      "benign_false_positive_rate": {
+        "available": true,
+        "denominator": 6,
+        "numerator": 0,
+        "value": 0.0
+      },
+      "containment_canary_pass_rate": {
+        "available": true,
+        "denominator": 13,
+        "numerator": 13,
+        "value": 1.0
+      },
+      "fault_injection_pass_rate": {
+        "available": true,
+        "denominator": 8,
+        "numerator": 8,
+        "value": 1.0
+      },
+      "highlighted_precision": {
+        "available": true,
+        "denominator": 4,
+        "numerator": 4,
+        "value": 1.0
+      },
+      "public_functional_pass_rate": {
+        "available": true,
+        "denominator": 9,
+        "numerator": 9,
+        "value": 1.0
+      },
+      "reproduction_consistency": {
+        "available": true,
+        "denominator": 10,
+        "numerator": 9,
+        "value": 0.9
+      },
+      "root_cause_accuracy": {
+        "available": true,
+        "denominator": 10,
+        "numerator": 10,
+        "value": 1.0
+      },
+      "static_completion_rate": {
+        "available": true,
+        "denominator": 15,
+        "numerator": 15,
+        "value": 1.0
+      }
+    },
+    "schema_version": "1.0.0",
+    "stable_v1_ready": false
+  },
+  "release_evidence": null,
+  "schema_version": "1.0.0",
+  "static": {
+    "case_count": 16,
+    "cases": [
+      {
+        "coverage_failed": [],
+        "coverage_skipped": [],
+        "coverage_unsupported": [
+          "dynamic_execution",
+          "platform_resolution",
+          "semantic_correctness"
+        ],
+        "duration_ms": 36.04,
+        "expected_coverage": {
+          "failed": [],
+          "unsupported_contains": []
+        },
+        "expected_rule_ids": [],
+        "highlighted_rule_ids": [],
+        "id": "valid-minimal",
+        "languages": [
+          "en"
+        ],
+        "matched_rule_ids": [],
+        "missed_rule_ids": [],
+        "passed": true,
+        "predicted_rule_ids": [],
+        "stratum": "benign",
+        "unexpected_rule_ids": []
+      },
+      {
+        "coverage_failed": [],
+        "coverage_skipped": [],
+        "coverage_unsupported": [
+          "dynamic_execution",
+          "platform_resolution",
+          "semantic_correctness"
+        ],
+        "duration_ms": 27.457,
+        "expected_coverage": {
+          "failed": [],
+          "unsupported_contains": []
+        },
+        "expected_rule_ids": [],
+        "highlighted_rule_ids": [],
+        "id": "benign-es",
+        "languages": [
+          "es"
+        ],
+        "matched_rule_ids": [],
+        "missed_rule_ids": [],
+        "passed": true,
+        "predicted_rule_ids": [],
+        "stratum": "multilingual-benign",
+        "unexpected_rule_ids": []
+      },
+      {
+        "coverage_failed": [],
+        "coverage_skipped": [],
+        "coverage_unsupported": [
+          "dynamic_execution",
+          "platform_resolution",
+          "semantic_correctness"
+        ],
+        "duration_ms": 26.055,
+        "expected_coverage": {
+          "failed": [],
+          "unsupported_contains": []
+        },
+        "expected_rule_ids": [],
+        "highlighted_rule_ids": [],
+        "id": "benign-ko",
+        "languages": [
+          "ko"
+        ],
+        "matched_rule_ids": [],
+        "missed_rule_ids": [],
+        "passed": true,
+        "predicted_rule_ids": [],
+        "stratum": "multilingual-benign",
+        "unexpected_rule_ids": []
+      },
+      {
+        "coverage_failed": [],
+        "coverage_skipped": [],
+        "coverage_unsupported": [
+          "dynamic_execution",
+          "platform_resolution",
+          "semantic_correctness"
+        ],
+        "duration_ms": 26.188,
+        "expected_coverage": {
+          "failed": [],
+          "unsupported_contains": []
+        },
+        "expected_rule_ids": [],
+        "highlighted_rule_ids": [],
+        "id": "benign-ja",
+        "languages": [
+          "ja"
+        ],
+        "matched_rule_ids": [],
+        "missed_rule_ids": [],
+        "passed": true,
+        "predicted_rule_ids": [],
+        "stratum": "multilingual-benign",
+        "unexpected_rule_ids": []
+      },
+      {
+        "coverage_failed": [],
+        "coverage_skipped": [
+          "script_analysis:scripts/check.rs:unsupported_language"
+        ],
+        "coverage_unsupported": [
+          "dynamic_execution",
+          "platform_resolution",
+          "semantic_correctness"
+        ],
+        "duration_ms": 59.566,
+        "expected_coverage": {
+          "failed": [],
+          "unsupported_contains": [
+            "dynamic_execution"
+          ]
+        },
+        "expected_rule_ids": [],
+        "highlighted_rule_ids": [],
+        "id": "unsupported-rust",
+        "languages": [
+          "en",
+          "rust"
+        ],
+        "matched_rule_ids": [],
+        "missed_rule_ids": [],
+        "passed": true,
+        "predicted_rule_ids": [],
+        "stratum": "unsupported-language",
+        "unexpected_rule_ids": []
+      },
+      {
+        "coverage_failed": [],
+        "coverage_skipped": [],
+        "coverage_unsupported": [
+          "dynamic_execution",
+          "platform_resolution",
+          "semantic_correctness"
+        ],
+        "duration_ms": 44.587,
+        "expected_coverage": {
+          "failed": [],
+          "unsupported_contains": []
+        },
+        "expected_rule_ids": [
+          "ASD005"
+        ],
+        "highlighted_rule_ids": [
+          "ASD005"
+        ],
+        "id": "broken-reference",
+        "languages": [
+          "en"
+        ],
+        "matched_rule_ids": [
+          "ASD005"
+        ],
+        "missed_rule_ids": [],
+        "passed": true,
+        "predicted_rule_ids": [
+          "ASD005"
+        ],
+        "stratum": "mutated-defect",
+        "unexpected_rule_ids": []
+      },
+      {
+        "coverage_failed": [],
+        "coverage_skipped": [],
+        "coverage_unsupported": [
+          "dynamic_execution",
+          "platform_resolution",
+          "semantic_correctness"
+        ],
+        "duration_ms": 34.163,
+        "expected_coverage": {
+          "failed": [],
+          "unsupported_contains": []
+        },
+        "expected_rule_ids": [
+          "ASD004"
+        ],
+        "highlighted_rule_ids": [
+          "ASD004"
+        ],
+        "id": "unsafe-reference",
+        "languages": [
+          "en"
+        ],
+        "matched_rule_ids": [
+          "ASD004"
+        ],
+        "missed_rule_ids": [],
+        "passed": true,
+        "predicted_rule_ids": [
+          "ASD004"
+        ],
+        "stratum": "mutated-defect",
+        "unexpected_rule_ids": []
+      },
+      {
+        "coverage_failed": [],
+        "coverage_skipped": [],
+        "coverage_unsupported": [
+          "dynamic_execution",
+          "platform_resolution",
+          "semantic_correctness"
+        ],
+        "duration_ms": 31.388,
+        "expected_coverage": {
+          "failed": [],
+          "unsupported_contains": []
+        },
+        "expected_rule_ids": [
+          "ASD006"
+        ],
+        "highlighted_rule_ids": [],
+        "id": "credential-shape",
+        "languages": [
+          "en"
+        ],
+        "matched_rule_ids": [
+          "ASD006"
+        ],
+        "missed_rule_ids": [],
+        "passed": true,
+        "predicted_rule_ids": [
+          "ASD006"
+        ],
+        "stratum": "mutated-defect",
+        "unexpected_rule_ids": []
+      },
+      {
+        "coverage_failed": [],
+        "coverage_skipped": [],
+        "coverage_unsupported": [
+          "dynamic_execution",
+          "platform_resolution",
+          "semantic_correctness"
+        ],
+        "duration_ms": 30.235,
+        "expected_coverage": {
+          "failed": [],
+          "unsupported_contains": []
+        },
+        "expected_rule_ids": [
+          "ASD007"
+        ],
+        "highlighted_rule_ids": [],
+        "id": "unsafe-command",
+        "languages": [
+          "en"
+        ],
+        "matched_rule_ids": [
+          "ASD007"
+        ],
+        "missed_rule_ids": [],
+        "passed": true,
+        "predicted_rule_ids": [
+          "ASD007"
+        ],
+        "stratum": "mutated-defect",
+        "unexpected_rule_ids": []
+      },
+      {
+        "coverage_failed": [],
+        "coverage_skipped": [],
+        "coverage_unsupported": [
+          "dynamic_execution",
+          "platform_resolution",
+          "semantic_correctness"
+        ],
+        "duration_ms": 62.02,
+        "expected_coverage": {
+          "failed": [],
+          "unsupported_contains": []
+        },
+        "expected_rule_ids": [
+          "ASD016"
+        ],
+        "highlighted_rule_ids": [],
+        "id": "dynamic-eval",
+        "languages": [
+          "en",
+          "python"
+        ],
+        "matched_rule_ids": [
+          "ASD016"
+        ],
+        "missed_rule_ids": [],
+        "passed": true,
+        "predicted_rule_ids": [
+          "ASD016"
+        ],
+        "stratum": "mutated-defect",
+        "unexpected_rule_ids": []
+      },
+      {
+        "coverage_failed": [],
+        "coverage_skipped": [],
+        "coverage_unsupported": [
+          "dynamic_execution",
+          "platform_resolution",
+          "semantic_correctness"
+        ],
+        "duration_ms": 86.901,
+        "expected_coverage": {
+          "failed": [],
+          "unsupported_contains": []
+        },
+        "expected_rule_ids": [
+          "ASD017"
+        ],
+        "highlighted_rule_ids": [],
+        "id": "broad-suppression",
+        "languages": [
+          "en",
+          "python"
+        ],
+        "matched_rule_ids": [
+          "ASD017"
+        ],
+        "missed_rule_ids": [],
+        "passed": true,
+        "predicted_rule_ids": [
+          "ASD017"
+        ],
+        "stratum": "mutated-defect",
+        "unexpected_rule_ids": []
+      },
+      {
+        "coverage_failed": [
+          "frontmatter"
+        ],
+        "coverage_skipped": [],
+        "coverage_unsupported": [
+          "dynamic_execution",
+          "platform_resolution",
+          "semantic_correctness"
+        ],
+        "duration_ms": 36.009,
+        "expected_coverage": {
+          "failed": [
+            "frontmatter"
+          ],
+          "unsupported_contains": []
+        },
+        "expected_rule_ids": [
+          "ASD003"
+        ],
+        "highlighted_rule_ids": [
+          "ASD003"
+        ],
+        "id": "invalid-frontmatter",
+        "languages": [
+          "en"
+        ],
+        "matched_rule_ids": [
+          "ASD003"
+        ],
+        "missed_rule_ids": [],
+        "passed": true,
+        "predicted_rule_ids": [
+          "ASD003"
+        ],
+        "stratum": "mutated-defect",
+        "unexpected_rule_ids": []
+      },
+      {
+        "coverage_failed": [],
+        "coverage_skipped": [],
+        "coverage_unsupported": [
+          "dynamic_execution",
+          "platform_resolution",
+          "semantic_correctness"
+        ],
+        "duration_ms": 26.396,
+        "expected_coverage": {
+          "failed": [],
+          "unsupported_contains": []
+        },
+        "expected_rule_ids": [
+          "ASD011"
+        ],
+        "highlighted_rule_ids": [
+          "ASD011"
+        ],
+        "id": "name-mismatch",
+        "languages": [
+          "en"
+        ],
+        "matched_rule_ids": [
+          "ASD011"
+        ],
+        "missed_rule_ids": [],
+        "passed": true,
+        "predicted_rule_ids": [
+          "ASD011"
+        ],
+        "stratum": "mutated-defect",
+        "unexpected_rule_ids": []
+      },
+      {
+        "coverage_failed": [],
+        "coverage_skipped": [],
+        "coverage_unsupported": [
+          "dynamic_execution",
+          "platform_resolution",
+          "semantic_correctness"
+        ],
+        "duration_ms": 29.483,
+        "expected_coverage": {
+          "failed": [],
+          "unsupported_contains": []
+        },
+        "expected_rule_ids": [
+          "ASD007"
+        ],
+        "highlighted_rule_ids": [],
+        "id": "prompt-injection",
+        "languages": [
+          "en"
+        ],
+        "matched_rule_ids": [
+          "ASD007"
+        ],
+        "missed_rule_ids": [],
+        "passed": true,
+        "predicted_rule_ids": [
+          "ASD007"
+        ],
+        "stratum": "hostile",
+        "unexpected_rule_ids": []
+      },
+      {
+        "coverage_failed": [],
+        "coverage_skipped": [],
+        "coverage_unsupported": [
+          "dynamic_execution",
+          "platform_resolution",
+          "semantic_correctness"
+        ],
+        "duration_ms": 213.975,
+        "expected_coverage": {
+          "failed": [],
+          "unsupported_contains": []
+        },
+        "expected_rule_ids": [],
+        "highlighted_rule_ids": [],
+        "id": "openai-skill-creator",
+        "languages": [
+          "en",
+          "python"
+        ],
+        "matched_rule_ids": [],
+        "missed_rule_ids": [],
+        "passed": true,
+        "predicted_rule_ids": [],
+        "stratum": "official-benign",
+        "unexpected_rule_ids": []
+      },
+      {
+        "coverage_failed": [],
+        "coverage_skipped": [],
+        "coverage_unsupported": [
+          "dynamic_execution",
+          "platform_resolution",
+          "semantic_correctness"
+        ],
+        "duration_ms": 516.872,
+        "expected_coverage": {
+          "failed": [],
+          "unsupported_contains": []
+        },
+        "expected_rule_ids": [],
+        "highlighted_rule_ids": [],
+        "id": "anthropic-skill-creator",
+        "languages": [
+          "en",
+          "python",
+          "html"
+        ],
+        "matched_rule_ids": [],
+        "missed_rule_ids": [],
+        "passed": true,
+        "predicted_rule_ids": [],
+        "stratum": "official-benign",
+        "unexpected_rule_ids": []
+      }
+    ],
+    "corpus_version": "1.0.0",
+    "licensed_upstream_sources": [
+      {
+        "commit": "49f948faa9258a0c61caceaf225e179651397431",
+        "git_tree": "8bfb6b8774d223eea3e788cfdfa1e4209e5e2ae9",
+        "id": "openai-skill-creator",
+        "ingestion": "Sparse checkout exact directory at the pinned commit; do not redistribute unknown-license siblings.",
+        "license": "Apache-2.0",
+        "license_path": "skills/.system/skill-creator/LICENSE.txt",
+        "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "path": "skills/.system/skill-creator",
+        "repository": "https://github.com/openai/skills",
+        "vendored_snapshot_sha256": "79044ea9a2c4c1933eecf1b4c9fca76e94698eb0f46f4fe117c2fd807b4be401"
+      },
+      {
+        "commit": "9d2f1ae187231d8199c64b5b762e1bdf2244733d",
+        "git_tree": "3cf9a8db32597ba3e24b584a3d696f4e11c7d7b6",
+        "id": "anthropic-skill-creator",
+        "ingestion": "Sparse checkout exact directory at the pinned commit; preserve license and notices.",
+        "license": "Apache-2.0",
+        "license_path": "skills/skill-creator/LICENSE.txt",
+        "license_sha256": "bc6b3af2f331cbc7fb0da1344efb2cbe5877a31498b4d70dbc7000f3405a1362",
+        "path": "skills/skill-creator",
+        "repository": "https://github.com/anthropics/skills",
+        "vendored_snapshot_sha256": "74aa3a9b0326fa0e7db72dd1dc8a77905e1fa246a82bf586569b43864a341340"
+      }
+    ],
+    "manifest": "benchmarks/public/v1/manifest.json",
+    "metrics": {
+      "benign_false_positive_rate": {
+        "available": true,
+        "denominator": 6,
+        "numerator": 0,
+        "value": 0.0
+      },
+      "expected_finding_recall": {
+        "available": true,
+        "denominator": 9,
+        "numerator": 9,
+        "value": 1.0
+      },
+      "highlighted_precision": {
+        "available": true,
+        "denominator": 4,
+        "numerator": 4,
+        "value": 1.0
+      },
+      "static_completion_rate": {
+        "available": true,
+        "denominator": 15,
+        "numerator": 15,
+        "value": 1.0
+      }
+    },
+    "ruleset_version": "2026-07-16.1",
+    "runtime": {
+      "basis": "measured_monotonic_wall_clock",
+      "cases_per_second": 12.429,
+      "median_case_duration_ms": 36.009,
+      "p95_case_duration_ms": 516.872,
+      "total_duration_ms": 1287.336
+    },
+    "schema_version": "1.0.0",
+    "tool_version": "0.1.0.dev0"
+  },
+  "validation": [
+    {
+      "containment": {
+        "available": true,
+        "denominator": 13,
+        "numerator": 13,
+        "value": 1.0
+      },
+      "fault_injection": {
+        "available": true,
+        "denominator": 8,
+        "numerator": 8,
+        "value": 1.0
+      },
+      "known_critical_sandbox_escapes": 0,
+      "platform": "linux",
+      "public_functional": {
+        "available": true,
+        "denominator": 9,
+        "numerator": 9,
+        "value": 1.0
+      }
+    }
+  ]
+}

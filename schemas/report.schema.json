@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-skill-doctor.dev/schemas/v1/report.schema.json",
+  "title": "Report",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "job_id",
+    "created_at",
+    "tool_version",
+    "ruleset_version",
+    "result_state",
+    "input_path",
+    "snapshot_hash",
+    "findings",
+    "evidence",
+    "coverage",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "job_id": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "tool_version": {"type": "string"},
+    "ruleset_version": {"type": "string"},
+    "result_state": {
+      "enum": [
+        "confirmed_issues",
+        "no_confirmed_issues",
+        "indeterminate",
+        "analysis_incomplete",
+        "cancelled",
+        "internal_error"
+      ]
+    },
+    "input_path": {"type": "string"},
+    "snapshot_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "findings": {"type": "array", "items": {"$ref": "finding.schema.json"}},
+    "evidence": {"type": "array", "items": {"$ref": "evidence.schema.json"}},
+    "coverage": {
+      "type": "object",
+      "required": ["completed", "skipped", "unsupported", "failed"],
+      "properties": {
+        "completed": {"type": "array", "items": {"type": "string"}},
+        "skipped": {"type": "array", "items": {"type": "string"}},
+        "unsupported": {"type": "array", "items": {"type": "string"}},
+        "failed": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "scope": {"enum": ["explicit", "named", "all", "session"]},
+    "platform": {"type": ["string", "null"], "enum": ["codex", "claude", null]},
+    "inventory": {"type": ["object", "null"]},
+    "analyzed_copies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "copy_ids",
+          "selectors",
+          "snapshot_hash",
+          "analyzed",
+          "reused_by_content_hash",
+          "reason"
+        ],
+        "properties": {
+          "copy_ids": {"type": "array", "items": {"type": "string"}},
+          "selectors": {"type": "array", "items": {"type": "string"}},
+          "snapshot_hash": {
+            "type": ["string", "null"],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "analyzed": {"type": "boolean"},
+          "reused_by_content_hash": {"type": "boolean"},
+          "reason": {"type": ["string", "null"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "dynamic_test_plan": {
+      "type": ["object", "null"],
+      "required": [
+        "depth",
+        "skill_count",
+        "test_count",
+        "estimated_seconds",
+        "runtime_uses",
+        "estimated_model_cost_usd",
+        "requires_approval"
+      ],
+      "properties": {
+        "depth": {"type": "string"},
+        "skill_count": {"type": "integer", "minimum": 0},
+        "test_count": {"type": "integer", "minimum": 0},
+        "estimated_seconds": {"type": "integer", "minimum": 0},
+        "runtime_uses": {"type": "integer", "minimum": 0},
+        "estimated_model_cost_usd": {"type": ["number", "null"], "minimum": 0},
+        "requires_approval": {"type": "boolean"},
+        "authored_test_count": {"type": "integer", "minimum": 0},
+        "inferred_test_count": {"type": "integer", "minimum": 0},
+        "repetitions": {"type": "integer", "minimum": 1},
+        "control_runs": {"type": "integer", "minimum": 0},
+        "required_consent_scopes": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        },
+        "approval_token": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "sandbox_readiness": {"type": ["object", "null"]},
+    "dynamic_results": {"type": "array", "items": {"type": "object"}},
+    "causal_graph": {"type": ["object", "null"]},
+    "remediations": {"type": "array", "items": {"type": "object"}},
+    "diagnostic_summary": {"type": ["object", "null"]},
+    "performance": {"type": ["object", "null"]},
+    "artifacts": {"type": ["object", "null"]},
+    "suppression_audit": {"type": ["object", "null"]},
+    "suppressed_finding_ids": {"type": "array", "items": {"type": "string"}},
+    "blocking_finding_ids": {"type": "array", "items": {"type": "string"}},
+    "report_language": {"type": "string", "minLength": 2, "maxLength": 32},
+    "session_id": {"type": ["string", "null"]},
+    "collection_manifest": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "path", "bytes", "collected", "confidence", "reason"],
+        "properties": {
+          "kind": {"type": "string"},
+          "path": {"type": ["string", "null"]},
+          "bytes": {"type": ["integer", "null"], "minimum": 0},
+          "collected": {"type": "boolean"},
+          "confidence": {"enum": ["high", "reduced"]},
+          "reason": {"type": ["string", "null"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "session_environment": {"type": ["object", "null"]},
+    "session_targets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["selector", "copy_id", "reason", "confidence", "analyzed"],
+        "properties": {
+          "selector": {"type": "string"},
+          "copy_id": {"type": ["string", "null"]},
+          "reason": {"type": "string"},
+          "confidence": {"enum": ["low", "medium", "high"]},
+          "analyzed": {"type": "boolean"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "trigger_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["selector", "copy_id", "shared_term_count", "confidence"],
+        "properties": {
+          "selector": {"type": "string"},
+          "copy_id": {"type": "string"},
+          "shared_term_count": {"type": "integer", "minimum": 0},
+          "confidence": {"enum": ["low", "medium", "high"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "hypotheses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "category", "summary", "confidence", "rank", "evidence_ids"],
+        "properties": {
+          "id": {"type": "string"},
+          "category": {"type": "string"},
+          "summary": {"type": "string"},
+          "confidence": {"enum": ["low", "medium", "high"]},
+          "rank": {"type": "integer", "minimum": 1},
+          "evidence_ids": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,103 @@
+name: protected-design-partner-signoff
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_ref:
+        description: Exact tag or commit covered by the evidence
+        required: true
+        type: string
+      release_version:
+        description: Release version covered by the evidence
+        required: true
+        type: string
+      participant_count:
+        description: Number of private alpha design partners
+        required: true
+        type: number
+      platforms_json:
+        description: JSON array of exercised host platforms
+        required: true
+        type: string
+      runtime_contexts_json:
+        description: Non-sensitive JSON array of platform/runtime/model combinations
+        required: true
+        type: string
+      issue_count:
+        description: Issues admitted to the remediation period
+        required: true
+        type: number
+      remediated_issue_count:
+        description: Issues remediated and independently rechecked
+        required: true
+        type: number
+      open_release_blockers:
+        description: Remaining release blockers; stable requires zero
+        required: true
+        type: number
+      remediation_started_at:
+        description: ISO 8601 remediation start
+        required: true
+        type: string
+      remediation_completed_at:
+        description: ISO 8601 remediation completion
+        required: true
+        type: string
+      public_preview_completed:
+        description: Confirm the public preview was completed
+        required: true
+        type: boolean
+      signoff:
+        description: Protected reviewer release sign-off
+        required: true
+        type: boolean
+
+permissions:
+  contents: read
+  id-token: write
+  attestations: write
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    environment: stable-release-design-partner
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.release_ref }}
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Bind checked-out evaluator to attested workflow source
+        run: >-
+          python scripts/verify_workflow_source.py
+          --release-ref "${{ inputs.release_ref }}"
+      - id: source
+        name: Resolve evidence source commit
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - run: python -m pip install --requirement requirements-dev.lock
+      - name: Validate and minimize protected evidence
+        env:
+          RELEASE_VERSION: ${{ inputs.release_version }}
+          EVALUATOR_COMMIT: ${{ steps.source.outputs.sha }}
+          PARTICIPANT_COUNT: ${{ inputs.participant_count }}
+          PLATFORMS_JSON: ${{ inputs.platforms_json }}
+          RUNTIME_CONTEXTS_JSON: ${{ inputs.runtime_contexts_json }}
+          ISSUE_COUNT: ${{ inputs.issue_count }}
+          REMEDIATED_ISSUE_COUNT: ${{ inputs.remediated_issue_count }}
+          OPEN_RELEASE_BLOCKERS: ${{ inputs.open_release_blockers }}
+          REMEDIATION_STARTED_AT: ${{ inputs.remediation_started_at }}
+          REMEDIATION_COMPLETED_AT: ${{ inputs.remediation_completed_at }}
+          PUBLIC_PREVIEW_COMPLETED: ${{ inputs.public_preview_completed }}
+          SIGNOFF: ${{ inputs.signoff }}
+        run: python scripts/create_release_evidence.py --output release-evidence.json
+      - uses: actions/attest-build-provenance@v3
+        with:
+          subject-path: release-evidence.json
+      - uses: actions/upload-artifact@v6
+        with:
+          name: release-evidence
+          path: release-evidence.json
+          if-no-files-found: error
+          retention-days: 90

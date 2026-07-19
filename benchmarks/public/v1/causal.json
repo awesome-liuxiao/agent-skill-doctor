@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "corpus_version": "1.0.0",
+  "scenarios": [
+    {
+      "id": "confirmed-authored-counterfactual",
+      "expected_confirmed": true,
+      "license": "Apache-2.0",
+      "dynamic_results": [{"skill_name":"fixture","snapshot_hash":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","trials":[{"case_id":"case","repetition":1,"control":false,"contract_trusted_for_job":true,"passed":false},{"case_id":"case","repetition":2,"control":false,"contract_trusted_for_job":true,"passed":false},{"case_id":"case","repetition":3,"control":false,"contract_trusted_for_job":true,"passed":false},{"case_id":"case","repetition":1,"control":true,"contract_trusted_for_job":true,"passed":true}]}]
+    },
+    {
+      "id": "untrusted-inferred-a",
+      "expected_confirmed": false,
+      "license": "Apache-2.0",
+      "dynamic_results": [{"skill_name":"fixture","snapshot_hash":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","trials":[{"case_id":"case","repetition":1,"control":false,"contract_trusted_for_job":false,"passed":false},{"case_id":"case","repetition":2,"control":false,"contract_trusted_for_job":false,"passed":false},{"case_id":"case","repetition":1,"control":true,"contract_trusted_for_job":false,"passed":true}]}]
+    },
+    {
+      "id": "untrusted-inferred-b",
+      "expected_confirmed": false,
+      "license": "Apache-2.0",
+      "dynamic_results": [{"skill_name":"fixture","snapshot_hash":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","trials":[{"case_id":"case","repetition":1,"control":false,"contract_trusted_for_job":false,"passed":true},{"case_id":"case","repetition":2,"control":false,"contract_trusted_for_job":false,"passed":true},{"case_id":"case","repetition":1,"control":true,"contract_trusted_for_job":false,"passed":true}]}]
+    },
+    {
+      "id": "untrusted-inferred-c",
+      "expected_confirmed": false,
+      "license": "Apache-2.0",
+      "dynamic_results": [{"skill_name":"fixture","snapshot_hash":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","trials":[{"case_id":"case","repetition":1,"control":false,"contract_trusted_for_job":false,"passed":false},{"case_id":"case","repetition":2,"control":false,"contract_trusted_for_job":false,"passed":false}]}]
+    },
+    {
+      "id": "untrusted-inferred-d",
+      "expected_confirmed": false,
+      "license": "Apache-2.0",
+      "dynamic_results": [{"skill_name":"fixture","snapshot_hash":"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee","trials":[{"case_id":"case","repetition":1,"control":false,"contract_trusted_for_job":false,"passed":true},{"case_id":"case","repetition":2,"control":false,"contract_trusted_for_job":false,"passed":true}]}]
+    },
+    {
+      "id": "shared-runtime-failure",
+      "expected_confirmed": false,
+      "license": "Apache-2.0",
+      "dynamic_results": [{"skill_name":"fixture","snapshot_hash":"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff","trials":[{"case_id":"case","repetition":1,"control":false,"contract_trusted_for_job":true,"passed":false},{"case_id":"case","repetition":2,"control":false,"contract_trusted_for_job":true,"passed":false},{"case_id":"case","repetition":1,"control":true,"contract_trusted_for_job":true,"passed":false}]}]
+    },
+    {
+      "id": "skill-unrelated",
+      "expected_confirmed": false,
+      "license": "Apache-2.0",
+      "dynamic_results": [{"skill_name":"fixture","snapshot_hash":"1111111111111111111111111111111111111111111111111111111111111111","trials":[{"case_id":"case","repetition":1,"control":false,"contract_trusted_for_job":true,"passed":true},{"case_id":"case","repetition":2,"control":false,"contract_trusted_for_job":true,"passed":true},{"case_id":"case","repetition":1,"control":true,"contract_trusted_for_job":true,"passed":false}]}]
+    },
+    {
+      "id": "untrusted-inferred-e",
+      "expected_confirmed": false,
+      "license": "Apache-2.0",
+      "dynamic_results": [{"skill_name":"fixture","snapshot_hash":"2222222222222222222222222222222222222222222222222222222222222222","trials":[{"case_id":"case","repetition":1,"control":false,"contract_trusted_for_job":false,"passed":false},{"case_id":"case","repetition":2,"control":false,"contract_trusted_for_job":false,"passed":false},{"case_id":"case","repetition":1,"control":true,"contract_trusted_for_job":false,"passed":false}]}]
+    },
+    {
+      "id": "untrusted-inferred-f",
+      "expected_confirmed": false,
+      "license": "Apache-2.0",
+      "dynamic_results": [{"skill_name":"fixture","snapshot_hash":"3333333333333333333333333333333333333333333333333333333333333333","trials":[{"case_id":"case","repetition":1,"control":false,"contract_trusted_for_job":false,"passed":true},{"case_id":"case","repetition":2,"control":false,"contract_trusted_for_job":false,"passed":true},{"case_id":"case","repetition":1,"control":true,"contract_trusted_for_job":false,"passed":false}]}]
+    },
+    {
+      "id": "nondeterministic-treatment",
+      "expected_confirmed": false,
+      "license": "Apache-2.0",
+      "dynamic_results": [{"skill_name":"fixture","snapshot_hash":"4444444444444444444444444444444444444444444444444444444444444444","trials":[{"case_id":"case","repetition":1,"control":false,"contract_trusted_for_job":true,"passed":false},{"case_id":"case","repetition":2,"control":false,"contract_trusted_for_job":true,"passed":true},{"case_id":"case","repetition":1,"control":true,"contract_trusted_for_job":true,"passed":true}]}]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "corpus_version": "1.0.0",
+  "license": "Apache-2.0",
+  "scenarios": [
+    {"id":"broken-reference","category":"broken_references","fixture":"fixtures/broken-reference","mutation":"Removed a referenced file.","expected":"ASD005","pytest_node_id":"tests/test_public_functional_benchmark.py::test_public_functional_broken_reference"},
+    {"id":"missing-dependency","category":"missing_dependencies","fixture":"functional/missing-dependency","mutation":"Replaced a locked dependency with an unpinned requirement.","expected":"DependencyPlanError","pytest_node_id":"tests/test_public_functional_benchmark.py::test_public_functional_missing_dependency"},
+    {"id":"skill-collision","category":"collisions","fixture":"functional/collision","mutation":"Added a same-name repository and user skill.","expected":"CODEX_DUPLICATE_NAME","pytest_node_id":"tests/test_public_functional_benchmark.py::test_public_functional_collision"},
+    {"id":"context-bloat","category":"context_bloat","fixture":"functional/context-bloat","mutation":"Expanded instructions beyond an explicit project context budget.","expected":"ASD700","pytest_node_id":"tests/test_public_functional_benchmark.py::test_public_functional_context_bloat"},
+    {"id":"trigger-failure","category":"trigger_failures","fixture":"functional/trigger-failure","mutation":"Removed explicit invocation while retaining strong description overlap.","expected":"trigger candidate only","pytest_node_id":"tests/test_public_functional_benchmark.py::test_public_functional_trigger_failure"},
+    {"id":"portability-defect","category":"portability_defects","fixture":"fixtures/unsafe-command","mutation":"Inserted a platform-specific pipe-to-shell command.","expected":"ASD007","pytest_node_id":"tests/test_public_functional_benchmark.py::test_public_functional_portability_defect"},
+    {"id":"performance-regression","category":"performance_regressions","fixture":"functional/performance-regression","mutation":"Doubled controlled median latency against a compatible three-sample baseline.","expected":"ASD701","pytest_node_id":"tests/test_public_functional_benchmark.py::test_public_functional_performance_regression"},
+    {"id":"authored-eval-contract","category":"functional_evaluation_contracts","fixture":"functional/eval-contract/fixture","mutation":"None; licensed project-authored functional contract.","expected":"all deterministic assertions pass","pytest_node_id":"tests/test_public_functional_benchmark.py::test_public_functional_authored_eval_contract"}
+  ]
+}

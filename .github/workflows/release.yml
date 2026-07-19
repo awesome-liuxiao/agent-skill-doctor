@@ -1,0 +1,216 @@
+name: signed-stable-release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_ref:
+        description: Existing stable tag; dispatch this workflow from the same tag
+        required: true
+        type: string
+      release_tag:
+        description: Stable release tag (for example v1.0.0)
+        required: true
+        type: string
+      held_out_run_id:
+        description: Successful protected held-out workflow run ID
+        required: true
+        type: string
+      design_partner_run_id:
+        description: Successful protected design-partner sign-off workflow run ID
+        required: true
+        type: string
+
+permissions:
+  actions: read
+  contents: write
+  id-token: write
+  attestations: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            platform: windows
+            bundle: windows-amd64
+          - os: macos-latest
+            platform: macos
+            bundle: macos-arm64
+          - os: ubuntu-latest
+            platform: linux
+            bundle: linux-amd64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.release_ref }}
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Bind build and provenance to the existing stable tag
+        run: >-
+          python scripts/verify_workflow_source.py
+          --release-ref "${{ inputs.release_ref }}"
+          --release-tag "${{ inputs.release_tag }}"
+          --require-stable-tag
+      - run: python -m pip install --requirement requirements-dev.lock
+      - run: python -m pip install --no-deps --requirement requirements-release.lock
+      - run: python -m pip check
+      - run: ruff format --check .
+      - run: ruff check .
+      - run: mypy src tests scripts
+      - run: pytest -q --junitxml=validation-${{ matrix.platform }}.xml
+      - name: Enforce public candidate gates
+        run: >-
+          python scripts/run_benchmark.py
+          --manifest benchmarks/public/v1/manifest.json
+          --causal benchmarks/public/v1/causal.json
+          --known-escapes security/known-sandbox-escapes.json
+          --junit validation-${{ matrix.platform }}.xml
+          --platform ${{ matrix.platform }}
+          --public-gate
+          --output public-benchmark-${{ matrix.platform }}.json
+      - name: Build deterministic standalone executable
+        env:
+          SOURCE_DATE_EPOCH: "1784160000"
+          PYTHONHASHSEED: "0"
+        run: >-
+          python scripts/build_standalone.py
+          --output dist/${{ matrix.bundle }}
+          --name agent-skill-doctor-${{ matrix.bundle }}
+      - name: Generate CycloneDX SBOM
+        run: >-
+          cyclonedx-py environment --output-format JSON
+          --output-file dist/${{ matrix.bundle }}/sbom-${{ matrix.bundle }}.cdx.json
+      - name: Generate checksummed release manifest
+        run: >-
+          python scripts/release_manifest.py dist/${{ matrix.bundle }}
+          --version "${{ inputs.release_tag }}"
+          --output dist/${{ matrix.bundle }}/manifest-${{ matrix.bundle }}.json
+      - uses: actions/attest-build-provenance@v3
+        with:
+          subject-path: dist/${{ matrix.bundle }}/*
+      - uses: sigstore/gh-action-sigstore-python@v3.0.0
+        with:
+          inputs: dist/${{ matrix.bundle }}/*
+          verify: true
+          verify-oidc-issuer: https://token.actions.githubusercontent.com
+          verify-cert-identity: ${{ github.server_url }}/${{ github.repository }}/.github/workflows/release.yml@${{ github.ref }}
+      - uses: actions/upload-artifact@v6
+        with:
+          name: agent-skill-doctor-${{ matrix.bundle }}
+          path: dist/${{ matrix.bundle }}
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v6
+        with:
+          name: validation-${{ matrix.platform }}
+          path: |
+            validation-${{ matrix.platform }}.xml
+            public-benchmark-${{ matrix.platform }}.json
+          if-no-files-found: error
+
+  release-gate:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: stable-release
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.release_ref }}
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Bind release gate and provenance to the existing stable tag
+        run: >-
+          python scripts/verify_workflow_source.py
+          --release-ref "${{ inputs.release_ref }}"
+          --release-tag "${{ inputs.release_tag }}"
+          --require-stable-tag
+      - id: source
+        name: Resolve release source commit
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - run: python -m pip install --requirement requirements-dev.lock
+      - uses: actions/download-artifact@v7
+        with:
+          pattern: validation-*
+          path: gate/validations
+          merge-multiple: true
+      - uses: actions/download-artifact@v7
+        with:
+          name: held-out-result
+          path: gate/held-out
+          run-id: ${{ inputs.held_out_run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v7
+        with:
+          name: release-evidence
+          path: gate/release-evidence
+          run-id: ${{ inputs.design_partner_run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify held-out result provenance and exact evaluator source
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >-
+          gh attestation verify gate/held-out/held-out-result.json
+          --repo "$GITHUB_REPOSITORY"
+          --signer-workflow "$GITHUB_REPOSITORY/.github/workflows/held-out-evaluation.yml"
+          --source-digest "${{ steps.source.outputs.sha }}"
+          --deny-self-hosted-runners
+      - name: Verify design-partner evidence provenance and exact source
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >-
+          gh attestation verify gate/release-evidence/release-evidence.json
+          --repo "$GITHUB_REPOSITORY"
+          --signer-workflow "$GITHUB_REPOSITORY/.github/workflows/design-partner-signoff.yml"
+          --source-digest "${{ steps.source.outputs.sha }}"
+          --deny-self-hosted-runners
+      - name: Enforce every stable-v1 gate
+        run: >-
+          python scripts/run_benchmark.py
+          --manifest benchmarks/public/v1/manifest.json
+          --causal benchmarks/public/v1/causal.json
+          --known-escapes security/known-sandbox-escapes.json
+          --junit gate/validations/validation-windows.xml --platform windows
+          --junit gate/validations/validation-macos.xml --platform macos
+          --junit gate/validations/validation-linux.xml --platform linux
+          --held-out-result gate/held-out/held-out-result.json
+          --held-out-attestation-verified
+          --release-evidence gate/release-evidence/release-evidence.json
+          --release-evidence-attestation-verified
+          --expected-evaluator-commit "${{ steps.source.outputs.sha }}"
+          --expected-release-version "${{ inputs.release_tag }}"
+          --output stable-v1-benchmark.json
+      - uses: actions/attest-build-provenance@v3
+        with:
+          subject-path: stable-v1-benchmark.json
+      - uses: actions/upload-artifact@v6
+        with:
+          name: stable-v1-benchmark
+          path: stable-v1-benchmark.json
+          if-no-files-found: error
+
+  publish:
+    needs: [build, release-gate]
+    runs-on: ubuntu-latest
+    environment: stable-release
+    steps:
+      - uses: actions/download-artifact@v7
+        with:
+          pattern: agent-skill-doctor-*
+          path: release
+          merge-multiple: true
+      - uses: actions/download-artifact@v7
+        with:
+          name: stable-v1-benchmark
+          path: release
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.release_tag }}
+          target_commitish: ${{ inputs.release_ref }}
+          files: release/*
+          fail_on_unmatched_files: true

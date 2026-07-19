@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "python": "3.12",
+  "pyinstaller": "6.14.2",
+  "cyclonedx_bom": "7.0.0",
+  "pyinstaller_hooks_contrib": "2026.6",
+  "release_lock": "requirements-release.lock",
+  "dependency_resolution": "pip --no-deps followed by pip check",
+  "source_date_epoch_required": true,
+  "hash_seed": "0",
+  "release_signing": "Sigstore keyless GitHub Actions identity",
+  "provenance": "GitHub artifact attestation"
+}

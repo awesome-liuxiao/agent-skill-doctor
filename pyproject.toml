@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-skill-doctor"
+version = "0.1.0.dev0"
+description = "Local, advisory-only diagnostics for agent skills"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { file = "LICENSE" }
+authors = [{ name = "Agent Skill Doctor contributors" }]
+dependencies = [
+    "cryptography==49.0.0",
+    "secretstorage==3.5.0; sys_platform == 'linux'",
+]
+
+[project.scripts]
+skill-doctor = "skill_doctor.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/skill_doctor"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+markers = [
+    "os_credential_store: integration test requiring the host credential facility",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+extend-exclude = [".benchmark-upstream", "benchmarks/public/v1/upstream"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101"]
+"benchmarks/public/v1/fixtures/**/*.py" = ["S110", "S307"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src", "tests", "scripts"]

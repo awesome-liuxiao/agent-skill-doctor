@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-skill-doctor.dev/schemas/v1/signed-envelope.schema.json",
+  "title": "Signed document envelope",
+  "type": "object",
+  "required": ["version", "algorithm", "key_id", "payload", "signature"],
+  "properties": {
+    "version": {"const": 1},
+    "algorithm": {"const": "Ed25519"},
+    "key_id": {"type": "string", "pattern": "^[0-9a-f]{32}$"},
+    "payload": {"type": "object"},
+    "signature": {"type": "string", "contentEncoding": "base64"}
+  },
+  "additionalProperties": false
+}

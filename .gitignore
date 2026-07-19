@@ -1,0 +1,15 @@
+/.venv/
+/.pytest_cache/
+/.mypy_cache/
+/.ruff_cache/
+/build/
+/dist/
+*.egg-info/
+__pycache__/
+*.py[cod]
+.doctor/
+.held-out/
+/held-out-corpus.tar.gz
+/held-out-result.json
+/.tmp-*
+/.benchmark-upstream/
