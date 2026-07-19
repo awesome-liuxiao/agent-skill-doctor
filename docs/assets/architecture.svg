@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="780" viewBox="0 0 1400 780" role="img" aria-labelledby="title desc">
+  <title id="title">Agent Skill Doctor local architecture</title>
+  <desc id="desc">Inputs flow through a local interface and authenticated worker into diagnostic engines, encrypted evidence storage, and four report formats.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#08111f"/><stop offset="1" stop-color="#121c30"/></linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#28c8ff"/><stop offset="1" stop-color="#8f70ff"/></linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0v6l9-3z" fill="#6681aa"/></marker>
+  </defs>
+  <rect width="1400" height="780" rx="32" fill="url(#bg)"/>
+  <circle cx="1250" cy="80" r="210" fill="#124b78" opacity=".12"/>
+  <text x="70" y="76" fill="#f5f9ff" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Local by design, layered for evidence</text>
+  <text x="70" y="112" fill="#9db0cf" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">The static path never executes skill content. Dynamic testing enters only through the consent and sandbox boundary.</text>
+
+  <g font-family="Inter, Segoe UI, Arial, sans-serif">
+    <text x="70" y="174" fill="#65d8ff" font-size="13" font-weight="700" letter-spacing="2">INPUTS</text>
+    <g fill="#101f35" stroke="#2a4566">
+      <rect x="70" y="194" width="230" height="90" rx="18"/><rect x="330" y="194" width="230" height="90" rx="18"/><rect x="590" y="194" width="230" height="90" rx="18"/>
+    </g>
+    <g fill="#f4f8ff" font-size="19" font-weight="700">
+      <text x="185" y="232" text-anchor="middle">Local skill</text><text x="445" y="232" text-anchor="middle">Codex / Claude</text><text x="705" y="232" text-anchor="middle">Current session</text>
+    </g>
+    <g fill="#9db0cf" font-size="14">
+      <text x="185" y="258" text-anchor="middle">Explicit directory</text><text x="445" y="258" text-anchor="middle">Named or discovered copy</text><text x="705" y="258" text-anchor="middle">Bounded evidence sources</text>
+    </g>
+
+    <text x="930" y="174" fill="#65d8ff" font-size="13" font-weight="700" letter-spacing="2">INTERFACE</text>
+    <rect x="930" y="194" width="400" height="90" rx="18" fill="#10233a" stroke="#2c5a7b"/>
+    <text x="1130" y="232" text-anchor="middle" fill="#f4f8ff" font-size="19" font-weight="700">CLI + thin agent wrappers</text>
+    <text x="1130" y="258" text-anchor="middle" fill="#9db0cf" font-size="14">Explicit commands, stable exit policy</text>
+
+    <path d="M185 284 V322 H1130 V305" fill="none" stroke="#6681aa" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M445 284 V322" stroke="#6681aa" stroke-width="2"/>
+    <path d="M705 284 V322" stroke="#6681aa" stroke-width="2"/>
+
+    <text x="70" y="370" fill="#9e86ff" font-size="13" font-weight="700" letter-spacing="2">AUTHENTICATED LOCAL WORKER</text>
+    <rect x="70" y="390" width="1260" height="118" rx="22" fill="#121d33" stroke="url(#line)" stroke-width="2"/>
+    <text x="110" y="429" fill="#f4f8ff" font-size="22" font-weight="700">Durable job engine</text>
+    <text x="110" y="460" fill="#9db0cf" font-size="15">Authenticated IPC · cancellation · resumption · immutable input hashes · idle shutdown</text>
+    <g transform="translate(865 414)">
+      <rect width="420" height="58" rx="15" fill="#0c1729" stroke="#314969"/>
+      <path d="M25 32 l10 10 19-24" fill="none" stroke="#35d7a0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="70" y="27" fill="#dff8ef" font-size="15" font-weight="700">Advisory only</text>
+      <text x="70" y="47" fill="#8fb8aa" font-size="13">No automatic skill edits or patches</text>
+    </g>
+
+    <path d="M700 508 V544" stroke="#6681aa" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="70" y="562" fill="#65d8ff" font-size="13" font-weight="700" letter-spacing="2">DIAGNOSTIC ENGINES</text>
+    <g fill="#101f35" stroke="#294361">
+      <rect x="70" y="582" width="196" height="76" rx="16"/><rect x="282" y="582" width="196" height="76" rx="16"/><rect x="494" y="582" width="196" height="76" rx="16"/><rect x="706" y="582" width="196" height="76" rx="16"/><rect x="918" y="582" width="196" height="76" rx="16"/>
+    </g>
+    <g fill="#f4f8ff" font-size="16" font-weight="700" text-anchor="middle">
+      <text x="168" y="616">Discovery + static</text><text x="380" y="616">Session evidence</text><text x="592" y="616">Dynamic runtime</text><text x="804" y="616">Causal analysis</text><text x="1016" y="616">Performance</text>
+    </g>
+    <g fill="#91a6c5" font-size="13" text-anchor="middle">
+      <text x="168" y="640">No execution</text><text x="380" y="640">Minimized inputs</text><text x="592" y="640">Sandbox + approval</text><text x="804" y="640">Counterfactuals</text><text x="1016" y="640">Explicit budgets</text>
+    </g>
+
+    <rect x="1130" y="550" width="200" height="108" rx="18" fill="#151b31" stroke="#624fa0"/>
+    <path d="M1161 586 h40 v38 h-40z M1170 577 h40 v38" fill="none" stroke="#a98cff" stroke-width="2.5"/>
+    <text x="1227" y="588" fill="#f4f8ff" font-size="16" font-weight="700">Encrypted</text>
+    <text x="1227" y="610" fill="#f4f8ff" font-size="16" font-weight="700">evidence store</text>
+    <text x="1227" y="636" fill="#9db0cf" font-size="12">Content-addressed</text>
+
+    <path d="M700 658 V692" stroke="#6681aa" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="70" y="731" fill="#9db0cf" font-size="15">OUTPUTS</text>
+    <g fill="#dce8f8" font-size="15" font-weight="700">
+      <text x="160" y="731">Terminal</text><text x="335" y="731">JSON</text><text x="485" y="731">Offline HTML</text><text x="690" y="731">SARIF 2.1</text><text x="870" y="731">JUnit XML</text><text x="1065" y="731">Sanitized export</text>
+    </g>
+    <line x1="150" y1="748" x2="1250" y2="748" stroke="url(#line)" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

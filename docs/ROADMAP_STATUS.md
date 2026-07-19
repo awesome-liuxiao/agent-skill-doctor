@@ -55,6 +55,6 @@ external outcomes, and the normal release path fails closed until all are suppli
   by the protected sign-off workflow; and
 - successful GitHub provenance verification for both protected evidence artifacts.
 
-There is no configured Git remote or committed release ref in this workspace, so those
-workflows cannot be run from the local worktree. No synthetic local result is substituted for
-them.
+Publishing the development repository does not satisfy those protected release workflows. They
+still require an exact tagged release ref plus independently produced and verified evidence; no
+synthetic local result is substituted for them.
