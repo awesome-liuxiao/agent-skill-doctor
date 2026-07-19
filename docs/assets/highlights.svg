@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="590" viewBox="0 0 1400 590" role="img" aria-labelledby="title desc">
+  <title id="title">Agent Skill Doctor product highlights</title>
+  <desc id="desc">Six highlights: local-first, evidence-linked, advisory-only, fail-closed, explicit consent, and portable reports.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7faff"/><stop offset="1" stop-color="#edf3fb"/></linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#006fae"/><stop offset="1" stop-color="#6b4bd6"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#19324f" flood-opacity=".12"/></filter>
+  </defs>
+  <rect width="1400" height="590" rx="32" fill="url(#bg)"/>
+  <circle cx="1280" cy="20" r="190" fill="#c7eaff" opacity=".48"/>
+  <circle cx="60" cy="590" r="180" fill="#ded3ff" opacity=".40"/>
+  <text x="70" y="75" fill="#11213a" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Guardrails that make the diagnosis useful</text>
+  <text x="70" y="111" fill="#536982" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">Designed for honest conclusions, inspectable evidence, and safe next steps.</text>
+
+  <g font-family="Inter, Segoe UI, Arial, sans-serif" filter="url(#shadow)">
+    <g transform="translate(70 155)">
+      <rect width="390" height="160" rx="22" fill="#ffffff" stroke="#d4e1f0"/>
+      <circle cx="48" cy="48" r="25" fill="#e1f7ff"/>
+      <path d="M35 48 h26 M48 35 v26 M39 39 l18 18 M57 39 l-18 18" stroke="#007bb8" stroke-width="2.5" stroke-linecap="round"/>
+      <text x="88" y="48" fill="#11213a" font-size="20" font-weight="700">Local-first</text>
+      <text x="30" y="95" fill="#536982" font-size="15"><tspan x="30">Static analysis and report generation stay on</tspan><tspan x="30" dy="23">your machine, with encrypted retained artifacts.</tspan></text>
+    </g>
+    <g transform="translate(505 155)">
+      <rect width="390" height="160" rx="22" fill="#ffffff" stroke="#d4e1f0"/>
+      <circle cx="48" cy="48" r="25" fill="#e8f1ff"/>
+      <path d="M34 50 l9 9 20-24 M33 68 h31" fill="none" stroke="#406fd0" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="88" y="48" fill="#11213a" font-size="20" font-weight="700">Evidence-linked</text>
+      <text x="30" y="95" fill="#536982" font-size="15"><tspan x="30">Every finding carries stable evidence, confidence,</tspan><tspan x="30" dy="23">coverage, severity, and a causal role.</tspan></text>
+    </g>
+    <g transform="translate(940 155)">
+      <rect width="390" height="160" rx="22" fill="#ffffff" stroke="#d4e1f0"/>
+      <circle cx="48" cy="48" r="25" fill="#ede9ff"/>
+      <path d="M36 37 h24 v24 h-24z M32 65 h32" fill="none" stroke="#7658d6" stroke-width="2.7" stroke-linecap="round"/>
+      <text x="88" y="48" fill="#11213a" font-size="20" font-weight="700">Advisory-only</text>
+      <text x="30" y="95" fill="#536982" font-size="15"><tspan x="30">It explains and recommends; it never rewrites</tspan><tspan x="30" dy="23">the skill or silently applies a patch.</tspan></text>
+    </g>
+
+    <g transform="translate(70 350)">
+      <rect width="390" height="160" rx="22" fill="#ffffff" stroke="#d4e1f0"/>
+      <circle cx="48" cy="48" r="25" fill="#e2f7f0"/>
+      <path d="M48 31 l17 7 v12 c0 12-7 20-17 26-10-6-17-14-17-26V38z M40 50 l6 6 11-14" fill="none" stroke="#128566" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="88" y="48" fill="#11213a" font-size="20" font-weight="700">Fail-closed</text>
+      <text x="30" y="95" fill="#536982" font-size="15"><tspan x="30">Missing containment, credentials, or evidence</tspan><tspan x="30" dy="23">becomes an explicit limitation—not a shortcut.</tspan></text>
+    </g>
+    <g transform="translate(505 350)">
+      <rect width="390" height="160" rx="22" fill="#ffffff" stroke="#d4e1f0"/>
+      <circle cx="48" cy="48" r="25" fill="#fff0df"/>
+      <path d="M33 48 h30 M48 33 v30 M37 37 l22 22" stroke="#bb6b0c" stroke-width="2.7" stroke-linecap="round"/>
+      <text x="88" y="48" fill="#11213a" font-size="20" font-weight="700">Explicit consent</text>
+      <text x="30" y="95" fill="#536982" font-size="15"><tspan x="30">Dynamic tests are a two-step plan-and-approve</tspan><tspan x="30" dy="23">flow bound to the exact requested experiment.</tspan></text>
+    </g>
+    <g transform="translate(940 350)">
+      <rect width="390" height="160" rx="22" fill="#ffffff" stroke="#d4e1f0"/>
+      <circle cx="48" cy="48" r="25" fill="#f0eaff"/>
+      <path d="M32 37 h32 v30 h-32z M38 43 h20 M38 50 h15 M38 57 h18" fill="none" stroke="#7658d6" stroke-width="2.7" stroke-linecap="round"/>
+      <text x="88" y="48" fill="#11213a" font-size="20" font-weight="700">Portable reports</text>
+      <text x="30" y="95" fill="#536982" font-size="15"><tspan x="30">Terminal, JSON, offline HTML, SARIF, and JUnit</tspan><tspan x="30" dy="23">share the same stable finding identifiers.</tspan></text>
+    </g>
+  </g>
+  <rect x="70" y="545" width="1260" height="5" rx="2.5" fill="url(#accent)"/>
+</svg>

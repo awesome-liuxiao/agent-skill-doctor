@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="560" viewBox="0 0 1400 560" role="img" aria-labelledby="title desc">
+  <title id="title">Agent Skill Doctor workflow</title>
+  <desc id="desc">Five steps from discovering a skill through producing evidence-linked reports.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#08111f"/>
+      <stop offset="1" stop-color="#111d33"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#28c8ff"/>
+      <stop offset="1" stop-color="#7c5cfc"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#536b94"/>
+    </marker>
+  </defs>
+
+  <rect width="1400" height="560" rx="32" fill="url(#bg)"/>
+  <circle cx="1250" cy="60" r="190" fill="#124b78" opacity=".14"/>
+  <circle cx="140" cy="520" r="220" fill="#5f3dc4" opacity=".10"/>
+
+  <text x="70" y="82" fill="#f5f9ff" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">From “something failed” to evidence you can act on</text>
+  <text x="70" y="119" fill="#9db0cf" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">Static checks stay local. Runtime reproduction is optional, sandboxed, and requires explicit approval.</text>
+
+  <g stroke="#536b94" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M290 294 H330"/>
+    <path d="M550 294 H590"/>
+    <path d="M810 294 H850"/>
+    <path d="M1070 294 H1110"/>
+  </g>
+
+  <g font-family="Inter, Segoe UI, Arial, sans-serif">
+    <g transform="translate(70 176)">
+      <rect width="220" height="240" rx="22" fill="#111f35" stroke="#28405f"/>
+      <circle cx="42" cy="42" r="23" fill="#123a56" stroke="#28c8ff"/>
+      <text x="42" y="49" text-anchor="middle" fill="#bcefff" font-size="20" font-weight="700">1</text>
+      <path d="M91 34 h42 a14 14 0 0 1 14 14 v30 h-70 v-30 a14 14 0 0 1 14-14z M93 54 h38 M93 66 h28" fill="none" stroke="#28c8ff" stroke-width="3" stroke-linecap="round"/>
+      <text x="24" y="126" fill="#f5f9ff" font-size="22" font-weight="700">Discover</text>
+      <text x="24" y="158" fill="#9db0cf" font-size="16"><tspan x="24">A path, a named skill,</tspan><tspan x="24" dy="24">or the current session.</tspan></text>
+    </g>
+
+    <g transform="translate(330 176)">
+      <rect width="220" height="240" rx="22" fill="#111f35" stroke="#28405f"/>
+      <circle cx="42" cy="42" r="23" fill="#153455" stroke="#52b9ff"/>
+      <text x="42" y="49" text-anchor="middle" fill="#d2efff" font-size="20" font-weight="700">2</text>
+      <path d="M82 42 l31-14 31 14-31 14z M82 42 v34 l31 14 31-14 v-34 M113 56 v34" fill="none" stroke="#52b9ff" stroke-width="3" stroke-linejoin="round"/>
+      <text x="24" y="126" fill="#f5f9ff" font-size="22" font-weight="700">Snapshot</text>
+      <text x="24" y="158" fill="#9db0cf" font-size="16"><tspan x="24">Bounded, immutable,</tspan><tspan x="24" dy="24">encrypted local input.</tspan></text>
+    </g>
+
+    <g transform="translate(590 176)">
+      <rect width="220" height="240" rx="22" fill="#111f35" stroke="#28405f"/>
+      <circle cx="42" cy="42" r="23" fill="#20305a" stroke="#7c8cff"/>
+      <text x="42" y="49" text-anchor="middle" fill="#e2e5ff" font-size="20" font-weight="700">3</text>
+      <circle cx="111" cy="56" r="27" fill="none" stroke="#7c8cff" stroke-width="3"/>
+      <path d="M130 76 l20 20 M95 56 h32 M111 40 v32" stroke="#7c8cff" stroke-width="3" stroke-linecap="round"/>
+      <text x="24" y="126" fill="#f5f9ff" font-size="22" font-weight="700">Analyze</text>
+      <text x="24" y="158" fill="#9db0cf" font-size="16"><tspan x="24">Rules, references,</tspan><tspan x="24" dy="24">triggers, dependencies.</tspan></text>
+    </g>
+
+    <g transform="translate(850 176)">
+      <rect width="220" height="240" rx="22" fill="#111f35" stroke="#28405f"/>
+      <circle cx="42" cy="42" r="23" fill="#2c2a57" stroke="#a676ff"/>
+      <text x="42" y="49" text-anchor="middle" fill="#efe2ff" font-size="20" font-weight="700">4</text>
+      <path d="M86 76 v-30 l27-15 27 15 v30 l-27 15z M99 61 l10 10 20-25" fill="none" stroke="#a676ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="24" y="126" fill="#f5f9ff" font-size="22" font-weight="700">Reproduce</text>
+      <text x="24" y="158" fill="#9db0cf" font-size="16"><tspan x="24">Optional controlled</tspan><tspan x="24" dy="24">runtime experiments.</tspan></text>
+      <text x="24" y="216" fill="#cbb7ff" font-size="13" font-weight="700">EXPLICIT APPROVAL</text>
+    </g>
+
+    <g transform="translate(1110 176)">
+      <rect width="220" height="240" rx="22" fill="#111f35" stroke="#28405f"/>
+      <circle cx="42" cy="42" r="23" fill="#26304f" stroke="#c3a8ff"/>
+      <text x="42" y="49" text-anchor="middle" fill="#f0eaff" font-size="20" font-weight="700">5</text>
+      <path d="M84 32 h58 v62 h-58z M95 48 h36 M95 61 h27 M95 74 h31" fill="none" stroke="#c3a8ff" stroke-width="3" stroke-linecap="round"/>
+      <text x="24" y="126" fill="#f5f9ff" font-size="22" font-weight="700">Explain</text>
+      <text x="24" y="158" fill="#9db0cf" font-size="16"><tspan x="24">Evidence-linked findings</tspan><tspan x="24" dy="24">and the next experiment.</tspan></text>
+    </g>
+  </g>
+
+  <rect x="70" y="464" width="1260" height="48" rx="24" fill="#0c1729" stroke="#243954"/>
+  <rect x="86" y="480" width="92" height="16" rx="8" fill="url(#accent)" filter="url(#glow)"/>
+  <text x="198" y="495" fill="#c6d3e8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16">Each conclusion carries evidence, confidence, coverage, and causal role—never a mystery score.</text>
+</svg>
