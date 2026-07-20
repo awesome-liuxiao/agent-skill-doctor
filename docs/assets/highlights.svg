@@ -1,82 +1,63 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="650" viewBox="0 0 1400 650" role="img" aria-labelledby="title desc">
-  <title id="title">Agent Skill Doctor product highlights</title>
-  <desc id="desc">Six notebook-style sketches describing local-first, evidence-linked, advisory-only, fail-closed, explicit-consent, and portable-report behavior.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="560" viewBox="0 0 1400 560" role="img" aria-labelledby="title desc">
+  <title id="title">Why Agent Skill Doctor is trustworthy</title>
+  <desc id="desc">Six concise cosmic cartoon cards for local-first analysis, evidence links, advisory-only findings, fail-closed behavior, explicit consent, and portable reports.</desc>
   <defs>
-    <pattern id="dotgrid" width="24" height="24" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.25" fill="#b9ad94" opacity=".43"/>
-    </pattern>
-    <filter id="paper" x="-10%" y="-10%" width="120%" height="120%">
-      <feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" seed="11" result="noise"/>
-      <feBlend in="SourceGraphic" in2="noise" mode="multiply"/>
-    </filter>
+    <style>
+      .ink{fill:#13203a}.hand{font-family:"Comic Sans MS","Segoe Print",cursive}.label{font-size:23px;font-weight:700}.note{font-size:15px;fill:#5a6477}.card{fill:#fffdf8;stroke:#13203a;stroke-width:3}.icon{fill:none;stroke:#13203a;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+    </style>
   </defs>
+  <rect width="1400" height="560" rx="28" fill="#fffaf0"/>
+  <path d="M45 86 C300 32 501 117 751 68 S1130 33 1362 91" fill="none" stroke="#0a2147" stroke-width="44" stroke-linecap="round"/>
+  <circle cx="1185" cy="61" r="5" fill="#ffd166"/><path d="M1290 86l5 12 12 5-12 5-5 12-5-12-12-5 12-5z" fill="#ff725c"/>
+  <text x="64" y="80" fill="#fffaf0" class="hand" font-size="34" font-weight="700">six small reasons to trust the answer</text>
 
-  <rect width="1400" height="650" rx="22" fill="#f5efdf"/>
-  <rect width="1400" height="650" rx="22" fill="url(#dotgrid)"/>
-  <path d="M42 117 C215 110 430 122 635 113" fill="none" stroke="#6d74cf" stroke-width="18" opacity=".22" stroke-linecap="round"/>
-  <path d="M49 120 C228 115 437 125 631 116" fill="none" stroke="#334155" stroke-width="2.5" stroke-linecap="round"/>
-  <text x="56" y="76" fill="#252a31" font-family="Segoe Print, Comic Sans MS, Bradley Hand, cursive" font-size="34" font-weight="700">Why the diagnosis is actually useful</text>
-  <text x="58" y="111" fill="#64605a" font-family="Segoe Print, Comic Sans MS, Bradley Hand, cursive" font-size="17">six guardrails I would want before trusting the answer</text>
-
-  <g font-family="Segoe Print, Comic Sans MS, Bradley Hand, cursive" fill="#252a31" stroke-linecap="round" stroke-linejoin="round">
-    <g transform="translate(58 158) rotate(-1.1 202 102)">
-      <path d="M8 8 Q198 -2 397 10 L404 188 Q205 201 1 187 Z" fill="#fffdf6" stroke="#373a40" stroke-width="2.3"/>
-      <path d="M10 12 Q197 3 392 13" fill="none" stroke="#373a40" stroke-width="1" opacity=".55"/>
-      <path d="M154 8 l83 -3 3 22 -88 3z" fill="#dfcda8" opacity=".72" stroke="none"/>
-      <path d="M33 54 c12-20 36-21 49-3 10 15 4 39-17 48-22-2-38-20-32-45z" fill="none" stroke="#1c7fa4" stroke-width="3"/>
-      <path d="M45 48 l26 29 M70 46 l-25 31 M58 39 v48 M39 62 h40" fill="none" stroke="#1c7fa4" stroke-width="2.6"/>
-      <path d="M106 69 C190 61 248 73 315 66" stroke="#46a7ce" stroke-width="14" opacity=".28"/>
-      <text x="105" y="72" font-size="23" font-weight="700">Local-first</text>
-      <text x="30" y="121" font-size="15" fill="#56534e"><tspan x="30">Static checks + report generation stay</tspan><tspan x="30" dy="25">on your machine. Retained data is encrypted.</tspan></text>
-    </g>
-
-    <g transform="translate(500 151) rotate(.8 202 102)">
-      <path d="M4 12 Q201 1 400 8 L397 190 Q194 196 7 185 Z" fill="#f4f2ff" stroke="#373a40" stroke-width="2.3"/>
-      <path d="M157 8 l84 1 -2 22 -86 -4z" fill="#d8caad" opacity=".7" stroke="none"/>
-      <path d="M34 46 l19 20 33-40 M30 79 Q59 88 88 78" fill="none" stroke="#5367c7" stroke-width="3.2"/>
-      <path d="M107 66 C181 75 251 62 330 70" stroke="#7568cf" stroke-width="14" opacity=".22"/>
-      <text x="106" y="72" font-size="23" font-weight="700">Evidence-linked</text>
-      <text x="30" y="121" font-size="15" fill="#56534e"><tspan x="30">Each finding keeps its evidence, confidence,</tspan><tspan x="30" dy="25">coverage, severity, and causal role separate.</tspan></text>
-    </g>
-
-    <g transform="translate(938 160) rotate(-.65 202 102)">
-      <path d="M5 5 Q198 13 401 4 L405 187 Q207 196 2 190 Z" fill="#fffaf1" stroke="#373a40" stroke-width="2.3"/>
-      <path d="M151 3 l94 4 -3 24 -91 -5z" fill="#ddc9a0" opacity=".72" stroke="none"/>
-      <path d="M34 35 l53 4 -4 49 -50-3z M29 92 Q59 87 91 94" fill="none" stroke="#8a58b5" stroke-width="3"/>
-      <path d="M106 67 C179 62 254 76 325 65" stroke="#9b75bd" stroke-width="15" opacity=".22"/>
-      <text x="105" y="72" font-size="23" font-weight="700">Advisory-only</text>
-      <text x="30" y="121" font-size="15" fill="#56534e"><tspan x="30">It explains and recommends. It never rewrites</tspan><tspan x="30" dy="25">your skill or quietly applies a patch.</tspan></text>
-    </g>
-
-    <g transform="translate(62 386) rotate(.7 202 102)">
-      <path d="M3 8 Q208 0 400 13 L397 192 Q190 184 8 194 Z" fill="#f3fbf5" stroke="#373a40" stroke-width="2.3"/>
-      <path d="M157 5 l88 2 -3 23 -90 -1z" fill="#d9c6a0" opacity=".72" stroke="none"/>
-      <path d="M59 32 l29 12 -4 25 q-5 19-26 29-22-11-26-30l-2-24z M43 61 l11 11 20-27" fill="none" stroke="#2b8b71" stroke-width="3"/>
-      <path d="M106 68 C176 74 243 61 289 69" stroke="#61b69b" stroke-width="14" opacity=".24"/>
-      <text x="105" y="72" font-size="23" font-weight="700">Fail-closed</text>
-      <text x="30" y="121" font-size="15" fill="#56534e"><tspan x="30">Missing containment or evidence becomes</tspan><tspan x="30" dy="25">an explicit limitation—not a shortcut.</tspan></text>
-    </g>
-
-    <g transform="translate(500 378) rotate(-.9 202 102)">
-      <path d="M9 10 Q203 0 397 7 L405 188 Q205 199 3 187 Z" fill="#fff8ea" stroke="#373a40" stroke-width="2.3"/>
-      <path d="M154 4 l88 6 -4 23 -89 -7z" fill="#ddc69e" opacity=".72" stroke="none"/>
-      <path d="M58 31 v63 M29 61 h62 M36 39 l45 43" fill="none" stroke="#c16b32" stroke-width="3"/>
-      <path d="M107 67 C184 58 249 75 327 65" stroke="#eeaa51" stroke-width="15" opacity=".27"/>
-      <text x="105" y="72" font-size="23" font-weight="700">Explicit consent</text>
-      <text x="30" y="121" font-size="15" fill="#56534e"><tspan x="30">Dynamic tests are planned first and approved</tspan><tspan x="30" dy="25">with a token bound to that exact experiment.</tspan></text>
-    </g>
-
-    <g transform="translate(938 389) rotate(1.05 202 102)">
-      <path d="M3 11 Q200 -1 397 9 L402 190 Q201 184 7 194 Z" fill="#f7f4ff" stroke="#373a40" stroke-width="2.3"/>
-      <path d="M154 5 l91 1 -2 23 -93 2z" fill="#d7c6a4" opacity=".72" stroke="none"/>
-      <path d="M31 35 l54 2 -3 60 -52-5z M41 50 h31 M40 63 h24 M40 76 h30" fill="none" stroke="#7055b8" stroke-width="3"/>
-      <path d="M106 68 C182 76 256 61 325 69" stroke="#8c76d4" stroke-width="14" opacity=".25"/>
-      <text x="105" y="72" font-size="23" font-weight="700">Portable reports</text>
-      <text x="30" y="121" font-size="15" fill="#56534e"><tspan x="30">Terminal, JSON, HTML, SARIF, and JUnit all</tspan><tspan x="30" dy="25">share the same stable finding identifiers.</tspan></text>
-    </g>
+  <g transform="translate(55 145) rotate(-1)">
+    <rect width="400" height="150" rx="30" class="card"/>
+    <circle cx="62" cy="62" r="34" fill="#dce7ff"/>
+    <path d="M42 62a20 20 0 1 0 40 0 20 20 0 1 0-40 0m20-20v40M44 55h36M46 70h32" class="icon"/>
+    <text x="112" y="58" class="ink hand label">Local-first</text>
+    <text x="112" y="90" class="hand note">analysis stays on your machine</text>
+    <path d="M113 101q92 10 194 0" fill="none" stroke="#315fe8" stroke-width="7" stroke-linecap="round" opacity=".45"/>
+  </g>
+  <g transform="translate(500 145) rotate(1)">
+    <rect width="400" height="150" rx="30" class="card"/>
+    <circle cx="62" cy="62" r="34" fill="#eee8ff"/>
+    <path d="M43 67l15 15 27-35M43 43q20-15 39 1" class="icon"/>
+    <text x="112" y="58" class="ink hand label">Evidence-linked</text>
+    <text x="112" y="90" class="hand note">every finding shows its trail</text>
+    <path d="M113 101q103-9 211 1" fill="none" stroke="#8b73e8" stroke-width="7" stroke-linecap="round" opacity=".45"/>
+  </g>
+  <g transform="translate(945 145) rotate(-1)">
+    <rect width="400" height="150" rx="30" class="card"/>
+    <circle cx="62" cy="62" r="34" fill="#ffe4de"/>
+    <path d="M47 45h30v34H47zM53 53h18M53 61h13M53 69h16" class="icon"/>
+    <text x="112" y="58" class="ink hand label">Advisory-only</text>
+    <text x="112" y="90" class="hand note">recommends, never rewrites</text>
+    <path d="M113 101q97 9 194-1" fill="none" stroke="#ff725c" stroke-width="7" stroke-linecap="round" opacity=".45"/>
   </g>
 
-  <path d="M1158 114 q21-24 42 0 q20 23 41-1 M1169 94 l-7 39 M1224 91 l5 42" fill="none" stroke="#d26450" stroke-width="2" opacity=".72"/>
-  <path d="M25 578 q23 25 43 0 t43 0" fill="none" stroke="#416fb3" stroke-width="4" opacity=".55"/>
-  <text x="1050" y="626" fill="#7a7469" font-family="Segoe Print, Comic Sans MS, Bradley Hand, cursive" font-size="13">notes from the trust-model whiteboard →</text>
+  <g transform="translate(55 345) rotate(1)">
+    <rect width="400" height="150" rx="30" class="card"/>
+    <circle cx="62" cy="62" r="34" fill="#e0f5ec"/>
+    <path d="M62 39l22 9-3 23q-3 17-19 25-17-9-20-25l-2-23zM51 64l8 8 15-18" class="icon"/>
+    <text x="112" y="58" class="ink hand label">Fail closed</text>
+    <text x="112" y="90" class="hand note">uncertainty stays visible</text>
+    <path d="M113 101q88-8 177 0" fill="none" stroke="#35a77b" stroke-width="7" stroke-linecap="round" opacity=".45"/>
+  </g>
+  <g transform="translate(500 345) rotate(-1)">
+    <rect width="400" height="150" rx="30" class="card"/>
+    <circle cx="62" cy="62" r="34" fill="#fff0c8"/>
+    <path d="M62 42v40M42 62h40M48 48l28 28" class="icon"/>
+    <text x="112" y="58" class="ink hand label">Explicit consent</text>
+    <text x="112" y="90" class="hand note">runtime tests ask first</text>
+    <path d="M113 101q89 9 183-1" fill="none" stroke="#f3ad29" stroke-width="7" stroke-linecap="round" opacity=".5"/>
+  </g>
+  <g transform="translate(945 345) rotate(1)">
+    <rect width="400" height="150" rx="30" class="card"/>
+    <circle cx="62" cy="62" r="34" fill="#e8e4ff"/>
+    <path d="M45 43h34v40H45zM52 53h20M52 63h14M52 73h18" class="icon"/>
+    <text x="112" y="58" class="ink hand label">Portable reports</text>
+    <text x="112" y="90" class="hand note">one story, many formats</text>
+    <path d="M113 101q101-8 204 1" fill="none" stroke="#725bd3" stroke-width="7" stroke-linecap="round" opacity=".45"/>
+  </g>
 </svg>
