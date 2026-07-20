@@ -26,7 +26,7 @@ untrusted content during static analysis, or collapse uncertainty into a mystery
 
 ## What you get
 
-![Six Agent Skill Doctor highlights: local-first, evidence-linked, advisory-only, fail-closed, explicit consent, and portable reports](docs/assets/highlights.svg)
+![Six Agent Skill Doctor highlights: local-first, evidence-linked, advisory-only, fail-closed, explicit consent, and portable reports](docs/assets/highlights-constellation.svg)
 
 - **Fast static checks by default.** Inspect frontmatter, references, secrets, commands, fallbacks,
   triggers, dependencies, and common script hazards without executing skill content.
