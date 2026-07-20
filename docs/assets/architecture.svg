@@ -1,71 +1,87 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="780" viewBox="0 0 1400 780" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" role="img" aria-labelledby="title desc">
   <title id="title">Agent Skill Doctor local architecture</title>
-  <desc id="desc">Inputs flow through a local interface and authenticated worker into diagnostic engines, encrypted evidence storage, and four report formats.</desc>
+  <desc id="desc">A hand-drawn engineering-notebook architecture showing inputs, the CLI, authenticated local worker, diagnostic engines, encrypted evidence store, and output formats.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#08111f"/><stop offset="1" stop-color="#121c30"/></linearGradient>
-    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#28c8ff"/><stop offset="1" stop-color="#8f70ff"/></linearGradient>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0v6l9-3z" fill="#6681aa"/></marker>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#aaa18f" opacity=".38"/></pattern>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto"><path d="M0 0 L10 4 L1 9" fill="none" stroke="#31343a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
   </defs>
-  <rect width="1400" height="780" rx="32" fill="url(#bg)"/>
-  <circle cx="1250" cy="80" r="210" fill="#124b78" opacity=".12"/>
-  <text x="70" y="76" fill="#f5f9ff" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Local by design, layered for evidence</text>
-  <text x="70" y="112" fill="#9db0cf" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">The static path never executes skill content. Dynamic testing enters only through the consent and sandbox boundary.</text>
 
-  <g font-family="Inter, Segoe UI, Arial, sans-serif">
-    <text x="70" y="174" fill="#65d8ff" font-size="13" font-weight="700" letter-spacing="2">INPUTS</text>
-    <g fill="#101f35" stroke="#2a4566">
-      <rect x="70" y="194" width="230" height="90" rx="18"/><rect x="330" y="194" width="230" height="90" rx="18"/><rect x="590" y="194" width="230" height="90" rx="18"/>
+  <rect width="1400" height="820" rx="22" fill="#f4eedf"/>
+  <rect width="1400" height="820" rx="22" fill="url(#dots)"/>
+  <path d="M32 24 l122 5 -5 34 -121 -7z" fill="#d8c49f" opacity=".68"/>
+  <path d="M1236 750 l130 -4 4 39 -131 2z" fill="#d9c59f" opacity=".66"/>
+  <text x="56" y="78" fill="#252a31" font-family="Segoe Print, Comic Sans MS, Bradley Hand, cursive" font-size="35" font-weight="700">Local by design — layered for evidence</text>
+  <path d="M54 95 C247 104 450 90 692 101" fill="none" stroke="#5f73c7" stroke-width="17" opacity=".21" stroke-linecap="round"/>
+  <text x="58" y="126" fill="#625f58" font-family="Segoe Print, Comic Sans MS, Bradley Hand, cursive" font-size="16">static path never executes skill content  ·  the sandbox gate is drawn separately on purpose</text>
+
+  <g font-family="Segoe Print, Comic Sans MS, Bradley Hand, cursive" stroke-linecap="round" stroke-linejoin="round">
+    <text x="65" y="178" fill="#2c7596" font-size="14" font-weight="700">INPUTS ↓</text>
+    <g fill="#fffaf0" stroke="#34373c" stroke-width="2">
+      <path d="M65 195 Q181 184 297 198 L292 278 Q178 287 68 276z"/>
+      <path d="M326 199 Q442 187 558 196 L562 278 Q443 286 329 275z"/>
+      <path d="M593 194 Q710 187 821 201 L816 279 Q703 287 590 274z"/>
     </g>
-    <g fill="#f4f8ff" font-size="19" font-weight="700">
-      <text x="185" y="232" text-anchor="middle">Local skill</text><text x="445" y="232" text-anchor="middle">Codex / Claude</text><text x="705" y="232" text-anchor="middle">Current session</text>
+    <g fill="#252a31" font-size="19" font-weight="700" text-anchor="middle">
+      <text x="180" y="229">local skill</text><text x="444" y="229">Codex / Claude</text><text x="706" y="229">current session</text>
     </g>
-    <g fill="#9db0cf" font-size="14">
-      <text x="185" y="258" text-anchor="middle">Explicit directory</text><text x="445" y="258" text-anchor="middle">Named or discovered copy</text><text x="705" y="258" text-anchor="middle">Bounded evidence sources</text>
-    </g>
-
-    <text x="930" y="174" fill="#65d8ff" font-size="13" font-weight="700" letter-spacing="2">INTERFACE</text>
-    <rect x="930" y="194" width="400" height="90" rx="18" fill="#10233a" stroke="#2c5a7b"/>
-    <text x="1130" y="232" text-anchor="middle" fill="#f4f8ff" font-size="19" font-weight="700">CLI + thin agent wrappers</text>
-    <text x="1130" y="258" text-anchor="middle" fill="#9db0cf" font-size="14">Explicit commands, stable exit policy</text>
-
-    <path d="M185 284 V322 H1130 V305" fill="none" stroke="#6681aa" stroke-width="2" marker-end="url(#arrow)"/>
-    <path d="M445 284 V322" stroke="#6681aa" stroke-width="2"/>
-    <path d="M705 284 V322" stroke="#6681aa" stroke-width="2"/>
-
-    <text x="70" y="370" fill="#9e86ff" font-size="13" font-weight="700" letter-spacing="2">AUTHENTICATED LOCAL WORKER</text>
-    <rect x="70" y="390" width="1260" height="118" rx="22" fill="#121d33" stroke="url(#line)" stroke-width="2"/>
-    <text x="110" y="429" fill="#f4f8ff" font-size="22" font-weight="700">Durable job engine</text>
-    <text x="110" y="460" fill="#9db0cf" font-size="15">Authenticated IPC · cancellation · resumption · immutable input hashes · idle shutdown</text>
-    <g transform="translate(865 414)">
-      <rect width="420" height="58" rx="15" fill="#0c1729" stroke="#314969"/>
-      <path d="M25 32 l10 10 19-24" fill="none" stroke="#35d7a0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      <text x="70" y="27" fill="#dff8ef" font-size="15" font-weight="700">Advisory only</text>
-      <text x="70" y="47" fill="#8fb8aa" font-size="13">No automatic skill edits or patches</text>
+    <g fill="#65615a" font-size="13" text-anchor="middle">
+      <text x="180" y="256">explicit directory</text><text x="444" y="256">named / discovered copy</text><text x="706" y="256">bounded evidence sources</text>
     </g>
 
-    <path d="M700 508 V544" stroke="#6681aa" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="70" y="562" fill="#65d8ff" font-size="13" font-weight="700" letter-spacing="2">DIAGNOSTIC ENGINES</text>
-    <g fill="#101f35" stroke="#294361">
-      <rect x="70" y="582" width="196" height="76" rx="16"/><rect x="282" y="582" width="196" height="76" rx="16"/><rect x="494" y="582" width="196" height="76" rx="16"/><rect x="706" y="582" width="196" height="76" rx="16"/><rect x="918" y="582" width="196" height="76" rx="16"/>
-    </g>
-    <g fill="#f4f8ff" font-size="16" font-weight="700" text-anchor="middle">
-      <text x="168" y="616">Discovery + static</text><text x="380" y="616">Session evidence</text><text x="592" y="616">Dynamic runtime</text><text x="804" y="616">Causal analysis</text><text x="1016" y="616">Performance</text>
-    </g>
-    <g fill="#91a6c5" font-size="13" text-anchor="middle">
-      <text x="168" y="640">No execution</text><text x="380" y="640">Minimized inputs</text><text x="592" y="640">Sandbox + approval</text><text x="804" y="640">Counterfactuals</text><text x="1016" y="640">Explicit budgets</text>
+    <g transform="rotate(1 1115 235)">
+      <path d="M903 194 Q1116 185 1324 198 L1320 278 Q1116 286 907 274z" fill="#f5f2ff" stroke="#34373c" stroke-width="2.4"/>
+      <path d="M984 202 l90 -5 3 21 -93 6z" fill="#d5c29e" opacity=".62" stroke="none"/>
+      <text x="1115" y="231" fill="#252a31" font-size="20" font-weight="700" text-anchor="middle">CLI + thin agent wrappers</text>
+      <text x="1115" y="257" fill="#65615a" font-size="13" text-anchor="middle">explicit commands · stable exit policy</text>
     </g>
 
-    <rect x="1130" y="550" width="200" height="108" rx="18" fill="#151b31" stroke="#624fa0"/>
-    <path d="M1161 586 h40 v38 h-40z M1170 577 h40 v38" fill="none" stroke="#a98cff" stroke-width="2.5"/>
-    <text x="1227" y="588" fill="#f4f8ff" font-size="16" font-weight="700">Encrypted</text>
-    <text x="1227" y="610" fill="#f4f8ff" font-size="16" font-weight="700">evidence store</text>
-    <text x="1227" y="636" fill="#9db0cf" font-size="12">Content-addressed</text>
+    <path d="M180 279 C181 314 457 302 693 314 S1041 318 1113 281" fill="none" stroke="#34373c" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <path d="M444 280 L447 305 M706 280 L705 315" stroke="#34373c" stroke-width="2"/>
 
-    <path d="M700 658 V692" stroke="#6681aa" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="70" y="731" fill="#9db0cf" font-size="15">OUTPUTS</text>
-    <g fill="#dce8f8" font-size="15" font-weight="700">
-      <text x="160" y="731">Terminal</text><text x="335" y="731">JSON</text><text x="485" y="731">Offline HTML</text><text x="690" y="731">SARIF 2.1</text><text x="870" y="731">JUnit XML</text><text x="1065" y="731">Sanitized export</text>
+    <text x="64" y="364" fill="#7454a7" font-size="14" font-weight="700">AUTHENTICATED LOCAL WORKER ↓</text>
+    <path d="M67 381 Q696 362 1330 383 L1322 514 Q700 528 72 510 Q58 446 67 381z" fill="#fffaf0" stroke="#30343a" stroke-width="3"/>
+    <path d="M73 389 Q699 372 1323 390" fill="none" stroke="#5269c2" stroke-width="2" opacity=".8"/>
+    <text x="105" y="426" fill="#252a31" font-size="25" font-weight="700">durable job engine</text>
+    <path d="M101 439 C255 452 388 430 528 444" stroke="#4d8ec2" stroke-width="14" opacity=".2"/>
+    <text x="105" y="470" fill="#625f58" font-size="15">authenticated IPC  ·  cancellation  ·  resumption  ·  immutable input hashes  ·  idle shutdown</text>
+
+    <g transform="rotate(-1.2 1090 445)">
+      <path d="M930 405 q166-10 323 3 l-5 82 q-160 8-316-3z" fill="#f2faf5" stroke="#30343a" stroke-width="2"/>
+      <path d="M957 442 l15 16 31-39" fill="none" stroke="#25876a" stroke-width="4"/>
+      <text x="1021" y="441" fill="#2f3c37" font-size="18" font-weight="700">advisory only</text>
+      <text x="1021" y="467" fill="#63706a" font-size="13">no automatic edits or patches</text>
     </g>
-    <line x1="150" y1="748" x2="1250" y2="748" stroke="url(#line)" stroke-width="4" stroke-linecap="round"/>
+
+    <path d="M701 515 C704 540 698 558 699 574" fill="none" stroke="#30343a" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <text x="65" y="595" fill="#2c7596" font-size="14" font-weight="700">DIAGNOSTIC ENGINES ↓</text>
+    <g fill="#fffaf0" stroke="#34373c" stroke-width="2">
+      <path d="M62 612 q112-10 220 3 l-4 78 q-108 8-215-2z"/>
+      <path d="M298 615 q111-11 216 1 l4 76 q-111 9-219-1z"/>
+      <path d="M533 612 q111-8 220 4 l-5 77 q-108 8-216-3z" fill="#faf3ff"/>
+      <path d="M768 615 q110-12 217 0 l2 78 q-110 7-217-2z"/>
+      <path d="M1003 611 q108-8 214 3 l-4 78 q-108 9-212-1z"/>
+    </g>
+    <g fill="#252a31" font-size="16" font-weight="700" text-anchor="middle">
+      <text x="172" y="646">discovery + static</text><text x="408" y="646">session evidence</text><text x="643" y="646">dynamic runtime</text><text x="878" y="646">causal analysis</text><text x="1109" y="646">performance</text>
+    </g>
+    <g fill="#68635c" font-size="12" text-anchor="middle">
+      <text x="172" y="673">no execution</text><text x="408" y="673">minimized inputs</text><text x="643" y="673">sandbox + approval</text><text x="878" y="673">counterfactuals</text><text x="1109" y="673">explicit budgets</text>
+    </g>
+
+    <g transform="rotate(1.6 1287 639)">
+      <path d="M1235 585 q86-9 135 9 l-4 103 q-72 10-134-2z" fill="#f6f1ff" stroke="#704fab" stroke-width="2.3"/>
+      <path d="M1252 613 h43 v49 h-43z M1261 605 h43 v49" fill="none" stroke="#704fab" stroke-width="2.5"/>
+      <text x="1307" y="676" fill="#563b77" font-size="11" text-anchor="middle">encrypted evidence</text>
+    </g>
+
+    <path d="M700 696 C705 714 699 727 699 739" fill="none" stroke="#30343a" stroke-width="2.4" marker-end="url(#arrow)"/>
+    <text x="66" y="766" fill="#6b665e" font-size="13">OUTPUTS →</text>
+    <g fill="#252a31" font-size="15" font-weight="700">
+      <text x="175" y="766">terminal</text><text x="324" y="766">JSON</text><text x="432" y="766">offline HTML</text><text x="604" y="766">SARIF</text><text x="718" y="766">JUnit</text><text x="830" y="766">sanitized export</text>
+    </g>
+    <path d="M169 780 C344 770 559 787 737 777 S1024 782 1162 775" fill="none" stroke="#4f70c0" stroke-width="5" opacity=".63"/>
   </g>
+
+  <path d="M1267 127 l16 17 29-40 M1252 115 q42-28 78 2 q15 37-19 58" fill="none" stroke="#d06450" stroke-width="2.4"/>
+  <path d="M34 735 q19-26 36-1 t38-2" fill="none" stroke="#2b88aa" stroke-width="3" opacity=".72"/>
 </svg>
