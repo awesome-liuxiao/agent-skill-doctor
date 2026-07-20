@@ -3,6 +3,9 @@ name: ci
 on:
   push:
   pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 1 * *"
 
 permissions:
   contents: read
@@ -50,3 +53,22 @@ jobs:
             validation-${{ matrix.platform }}.xml
             public-benchmark-${{ matrix.platform }}.json
           if-no-files-found: error
+
+  reusable-action:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - id: doctor
+        uses: ./
+        with:
+          path: examples/broken-skill
+          platform: codex
+          fail-on-findings: false
+          sarif: ${{ runner.temp }}/skill-doctor.sarif.json
+      - name: Verify action outputs
+        shell: bash
+        run: |
+          test "${{ steps.doctor.outputs.exit-code }}" = "0"
+          test -s "${{ steps.doctor.outputs.sarif }}"

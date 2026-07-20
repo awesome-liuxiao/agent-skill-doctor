@@ -1,0 +1,32 @@
+name: Feature proposal
+description: Propose a scoped change to an existing public contract.
+title: "[Feature]: "
+labels: [enhancement, triage]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user-visible diagnostic gap should be addressed?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and examples
+      description: Use public, synthetic, or explicitly licensed examples only.
+    validations:
+      required: true
+  - type: textarea
+    id: boundary
+    attributes:
+      label: Security and consent boundary
+      description: Explain why the proposal does not weaken local-first, advisory-only, or fail-closed behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Smallest useful outcome
+    validations:
+      required: true

@@ -24,7 +24,7 @@ The current local quality gate is:
 ruff format --check: pass
 ruff check: pass
 mypy --strict: pass
-pytest: 138 passed, 3 skipped (Windows symlink privilege only)
+pytest: 145 passed, 3 skipped (Windows symlink privilege only)
 pip check: pass
 Windows public candidate gate: pass
 wheel content check: pass

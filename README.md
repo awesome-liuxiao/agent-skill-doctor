@@ -1,7 +1,7 @@
 <div align="center">
   <img src="docs/assets/agent-skill-doctor-hero.png" alt="Agent skill documents passing through a diagnostic lens into an evidence-backed shield" width="100%">
   <h1>Agent Skill Doctor</h1>
-  <p><strong>Find out why an agent skill misbehaved—without turning diagnosis into another source of risk.</strong></p>
+  <p><strong>Find broken, risky, and misleading Codex or Claude Code skills locally—without executing or rewriting them.</strong></p>
   <p>
     <a href="https://github.com/awesome-liuxiao/agent-skill-doctor/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/awesome-liuxiao/agent-skill-doctor/actions/workflows/ci.yml/badge.svg"></a>
     <img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white">
@@ -24,6 +24,13 @@ untrusted content during static analysis, or collapse uncertainty into a mystery
 > but stable v1 still requires independent cross-platform, held-out, and design-partner evidence.
 > See the [roadmap status](docs/ROADMAP_STATUS.md) for the exact release gates.
 
+## Try it in 60 seconds
+
+![Terminal demo showing Agent Skill Doctor identify a broken reference and suspicious command without changing the skill](docs/assets/terminal-demo.gif)
+
+The bundled example is deliberately broken. The doctor finds its missing reference and unsafe
+command pattern, links both findings to their source lines, and leaves every file untouched.
+
 ## What you get
 
 ![Six Agent Skill Doctor highlights: local-first, evidence-linked, advisory-only, fail-closed, explicit consent, and portable reports](docs/assets/highlights-constellation.svg)
@@ -45,32 +52,18 @@ untrusted content during static analysis, or collapse uncertainty into a mystery
 
 ### 1. Install the development preview
 
-You need **Python 3.12**.
+You need **Python 3.12** and Git. Install the CLI into an isolated environment with either tool:
 
 ```console
-git clone https://github.com/awesome-liuxiao/agent-skill-doctor.git
-cd agent-skill-doctor
-python -m venv .venv
+uv tool install git+https://github.com/awesome-liuxiao/agent-skill-doctor.git@v0.1.0a1
 ```
-
-Activate the environment:
-
-```powershell
-# Windows PowerShell
-.venv\Scripts\Activate.ps1
-```
-
-```bash
-# macOS / Linux
-source .venv/bin/activate
-```
-
-Then install the locked development dependencies and the package:
 
 ```console
-python -m pip install -r requirements-dev.lock
-python -m pip install -e .
+pipx install git+https://github.com/awesome-liuxiao/agent-skill-doctor.git@v0.1.0a1
 ```
+
+This source-preview path is intentionally separate from the signed standalone installer used by
+gated releases. See [verified installation](docs/INSTALLATION.md) for the trust boundary.
 
 ### 2. Run your first check
 
@@ -83,6 +76,13 @@ skill-doctor check deploy --platform codex
 
 # Diagnose the current Codex session
 skill-doctor diagnose --platform codex
+```
+
+To reproduce the demo against the included example:
+
+```console
+git clone --branch v0.1.0a1 --depth 1 https://github.com/awesome-liuxiao/agent-skill-doctor.git
+skill-doctor check agent-skill-doctor/examples/broken-skill
 ```
 
 The command starts an authenticated per-user worker on demand, streams durable progress events,
@@ -169,6 +169,21 @@ A clean exit is not a universal claim that a skill is “safe” or “healthy.�
 checks did not establish a blocking issue. The report always records skipped, unsupported, and failed
 coverage beside that conclusion.
 
+### Use it in GitHub Actions
+
+The repository includes a reusable composite action. During the development preview, pin it to an
+exact commit for production use; the preview tag is convenient for evaluation:
+
+```yaml
+- uses: awesome-liuxiao/agent-skill-doctor@v0.1.0a1
+  with:
+    path: path/to/skill
+    platform: codex
+```
+
+The action exposes the native exit code and writes a SARIF file for optional upload to GitHub code
+scanning. See the complete [GitHub Actions integration](docs/INTEGRATIONS.md#github-actions).
+
 ## Trust model
 
 Agent Skill Doctor is built around a few non-negotiable boundaries:
@@ -188,9 +203,9 @@ For the full security boundary, start with the [threat model](docs/THREAT_MODEL.
 
 ## Project status
 
-Current package version: **`0.1.0.dev0`**.
+Current package version: **`0.1.0a1`** — a static-analysis alpha, not stable v1.
 
-The current local Windows quality gate records **138 passed tests** with 3 symlink tests skipped only
+The current local Windows quality gate records **145 passed tests** with 3 symlink tests skipped only
 because the host lacks symlink privileges. Ruff and strict mypy checks pass. Checked-in public corpus
 results cover static detection, causal classification, containment, fault injection, and functional
 flows. These are useful development results—not a substitute for the external evidence required for
@@ -203,9 +218,11 @@ stable v1.
 | Using the doctor | [Discovery](docs/DISCOVERY.md) · [Session evidence](docs/SESSION_EVIDENCE.md) · [Reporting](docs/REPORTING.md) |
 | Runtime and safety | [Dynamic testing](docs/DYNAMIC_TESTING.md) · [Sandbox](docs/SANDBOX.md) · [Threat model](docs/THREAT_MODEL.md) |
 | Installation and updates | [Verified installation](docs/INSTALLATION.md) · [Reproducible builds](docs/REPRODUCIBLE_BUILDS.md) |
+| Integrations and community | [GitHub Action and wrappers](docs/INTEGRATIONS.md) · [Design partners](docs/DESIGN_PARTNERS.md) · [Contributing](CONTRIBUTING.md) |
+| Technical introduction | [Why agent skills fail in surprising ways](docs/WHY_AGENT_SKILLS_FAIL.md) |
 | Diagnosis model | [Product boundaries](docs/PRODUCT.md) · [Claim model](docs/DIAGNOSTIC_MODEL.md) · [Policies](docs/POLICIES.md) |
 | Performance and compatibility | [Performance](docs/PERFORMANCE.md) · [Compatibility](docs/COMPATIBILITY.md) |
-| Release evidence | [Roadmap status](docs/ROADMAP_STATUS.md) · [Benchmarks and provenance](docs/BENCHMARKS_AND_PROVENANCE.md) · [Release process](docs/RELEASE_PROCESS.md) |
+| Release evidence | [Roadmap status](docs/ROADMAP_STATUS.md) · [Public benchmark snapshot](docs/STATE_OF_AGENT_SKILLS.md) · [Release process](docs/RELEASE_PROCESS.md) |
 
 ## Development
 
@@ -220,6 +237,14 @@ python -m pytest
 
 The repository includes public fixtures, functional scenarios, causal scenarios, fault injection,
 release checks, JSON schemas, and thin explicit-invocation wrappers for Codex and Claude Code.
+
+## Join the preview
+
+The project is looking for maintainers of real Codex and Claude Code skills who can share
+sanitized outcomes from local static checks. Raw prompts, credentials, private paths, and customer
+skills are not requested. Start with [GitHub Discussions](https://github.com/awesome-liuxiao/agent-skill-doctor/discussions),
+read the [design-partner guide](docs/DESIGN_PARTNERS.md), or pick a scoped contribution from
+[the contributing guide](CONTRIBUTING.md).
 
 ## Security and license
 

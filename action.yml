@@ -1,0 +1,85 @@
+name: Agent Skill Doctor
+description: Run local-first static diagnostics for a Codex or Claude Code skill and emit SARIF.
+author: Agent Skill Doctor contributors
+branding:
+  icon: activity
+  color: blue
+
+inputs:
+  path:
+    description: Repository-relative path to the skill directory.
+    required: true
+  platform:
+    description: "Skill platform: codex or claude."
+    required: false
+    default: codex
+  fail-on-findings:
+    description: Fail when the audited CLI returns exit code 1 for a blocking finding.
+    required: false
+    default: "true"
+  sarif:
+    description: Destination path for the generated SARIF report.
+    required: false
+    default: skill-doctor.sarif.json
+
+outputs:
+  exit-code:
+    description: Native Agent Skill Doctor exit code.
+    value: ${{ steps.doctor.outputs.exit-code }}
+  sarif:
+    description: SARIF path, or an empty string when no report was produced.
+    value: ${{ steps.doctor.outputs.sarif }}
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v6
+      with:
+        python-version: "3.12"
+        cache: pip
+        cache-dependency-path: ${{ github.action_path }}/pyproject.toml
+
+    - name: Install the checked-out doctor
+      shell: bash
+      run: python -m pip install --disable-pip-version-check "${GITHUB_ACTION_PATH}"
+
+    - id: doctor
+      name: Diagnose the skill
+      shell: bash
+      env:
+        DOCTOR_PATH: ${{ inputs.path }}
+        DOCTOR_PLATFORM: ${{ inputs.platform }}
+        DOCTOR_FAIL_ON_FINDINGS: ${{ inputs.fail-on-findings }}
+        DOCTOR_SARIF: ${{ inputs.sarif }}
+      run: |
+        if [[ "$DOCTOR_PLATFORM" != "codex" && "$DOCTOR_PLATFORM" != "claude" ]]; then
+          echo "platform must be codex or claude" >&2
+          exit 2
+        fi
+        if [[ "$DOCTOR_FAIL_ON_FINDINGS" != "true" && "$DOCTOR_FAIL_ON_FINDINGS" != "false" ]]; then
+          echo "fail-on-findings must be true or false" >&2
+          exit 2
+        fi
+
+        state_dir="${RUNNER_TEMP}/agent-skill-doctor"
+        set +e
+        skill-doctor check "$DOCTOR_PATH" --platform "$DOCTOR_PLATFORM" --state-dir "$state_dir"
+        status=$?
+        set -e
+
+        sarif_source="$(find "$state_dir/reports" -maxdepth 1 -type f -name '*.sarif.json' -print 2>/dev/null | sort | tail -n 1)"
+        if [[ -n "$sarif_source" ]]; then
+          mkdir -p "$(dirname "$DOCTOR_SARIF")"
+          cp "$sarif_source" "$DOCTOR_SARIF"
+          sarif_path="$(python -c 'import os,sys; print(os.path.abspath(sys.argv[1]))' "$DOCTOR_SARIF")"
+          echo "sarif=$sarif_path" >> "$GITHUB_OUTPUT"
+        else
+          echo "sarif=" >> "$GITHUB_OUTPUT"
+        fi
+        echo "exit-code=$status" >> "$GITHUB_OUTPUT"
+
+        if [[ "$status" -eq 1 && "$DOCTOR_FAIL_ON_FINDINGS" == "false" ]]; then
+          exit 0
+        fi
+        exit "$status"

@@ -14,6 +14,18 @@
 6. Stable v1: every quantitative gate passes on an attested rotating held-out corpus and
    all three platform validation artifacts, with no unresolved critical sandbox escape.
 
+## Public static-analysis alpha
+
+The separate `signed-public-preview` workflow may publish a PEP 440 alpha, beta, or release
+candidate tag such as `v0.1.0a1`. It runs the complete public candidate gate on GitHub-hosted
+Windows, macOS, and Linux runners, then publishes only an attested wheel and source distribution as
+a GitHub prerelease. It does not publish standalone executables, claim stable readiness, or bypass
+any protected stable-release evidence gate.
+
+Dispatch the workflow from the exact existing preview tag and provide the same value for
+`release_ref` and `release_tag`. Source commit, checked-out `HEAD`, workflow source SHA, tag, and
+package version must agree. Preview release notes must enumerate every missing external gate.
+
 Design-partner evidence is kept outside the repository because it may contain private
 session material. The release owner records only aggregate participant count, tested
 platform/runtime combinations, issue IDs, remediation status, and sign-off in the protected
