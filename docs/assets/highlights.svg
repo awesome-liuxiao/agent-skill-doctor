@@ -1,63 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="560" viewBox="0 0 1400 560" role="img" aria-labelledby="title desc">
-  <title id="title">Why Agent Skill Doctor is trustworthy</title>
-  <desc id="desc">Six concise cosmic cartoon cards for local-first analysis, evidence links, advisory-only findings, fail-closed behavior, explicit consent, and portable reports.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="540" viewBox="0 0 1400 540" role="img" aria-labelledby="title desc">
+  <title id="title">Six Agent Skill Doctor highlights</title>
+  <desc id="desc">An open cosmic constellation showing local-first analysis, evidence links, advisory-only findings, fail-closed behavior, explicit consent, and portable reports.</desc>
   <defs>
     <style>
-      .ink{fill:#13203a}.hand{font-family:"Comic Sans MS","Segoe Print",cursive}.label{font-size:23px;font-weight:700}.note{font-size:15px;fill:#5a6477}.card{fill:#fffdf8;stroke:#13203a;stroke-width:3}.icon{fill:none;stroke:#13203a;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+      .hand{font-family:"Comic Sans MS","Segoe Print",cursive}.ink{fill:#13203a}.name{font-size:21px;font-weight:700}.note{font-size:14px;fill:#657084}.planet{stroke:#13203a;stroke-width:3}.icon{fill:none;stroke:#13203a;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
     </style>
   </defs>
-  <rect width="1400" height="560" rx="28" fill="#fffaf0"/>
-  <path d="M45 86 C300 32 501 117 751 68 S1130 33 1362 91" fill="none" stroke="#0a2147" stroke-width="44" stroke-linecap="round"/>
-  <circle cx="1185" cy="61" r="5" fill="#ffd166"/><path d="M1290 86l5 12 12 5-12 5-5 12-5-12-12-5 12-5z" fill="#ff725c"/>
-  <text x="64" y="80" fill="#fffaf0" class="hand" font-size="34" font-weight="700">six small reasons to trust the answer</text>
 
-  <g transform="translate(55 145) rotate(-1)">
-    <rect width="400" height="150" rx="30" class="card"/>
-    <circle cx="62" cy="62" r="34" fill="#dce7ff"/>
-    <path d="M42 62a20 20 0 1 0 40 0 20 20 0 1 0-40 0m20-20v40M44 55h36M46 70h32" class="icon"/>
-    <text x="112" y="58" class="ink hand label">Local-first</text>
-    <text x="112" y="90" class="hand note">analysis stays on your machine</text>
-    <path d="M113 101q92 10 194 0" fill="none" stroke="#315fe8" stroke-width="7" stroke-linecap="round" opacity=".45"/>
-  </g>
-  <g transform="translate(500 145) rotate(1)">
-    <rect width="400" height="150" rx="30" class="card"/>
-    <circle cx="62" cy="62" r="34" fill="#eee8ff"/>
-    <path d="M43 67l15 15 27-35M43 43q20-15 39 1" class="icon"/>
-    <text x="112" y="58" class="ink hand label">Evidence-linked</text>
-    <text x="112" y="90" class="hand note">every finding shows its trail</text>
-    <path d="M113 101q103-9 211 1" fill="none" stroke="#8b73e8" stroke-width="7" stroke-linecap="round" opacity=".45"/>
-  </g>
-  <g transform="translate(945 145) rotate(-1)">
-    <rect width="400" height="150" rx="30" class="card"/>
-    <circle cx="62" cy="62" r="34" fill="#ffe4de"/>
-    <path d="M47 45h30v34H47zM53 53h18M53 61h13M53 69h16" class="icon"/>
-    <text x="112" y="58" class="ink hand label">Advisory-only</text>
-    <text x="112" y="90" class="hand note">recommends, never rewrites</text>
-    <path d="M113 101q97 9 194-1" fill="none" stroke="#ff725c" stroke-width="7" stroke-linecap="round" opacity=".45"/>
+  <rect width="1400" height="540" rx="28" fill="#fffaf0"/>
+  <text x="60" y="68" class="ink hand" font-size="36" font-weight="700">what you get, at a glance</text>
+  <text x="62" y="100" class="hand note" font-size="17">six useful signals in one little constellation</text>
+
+  <path d="M92 232 C205 124 300 346 420 292 S605 128 706 225 866 373 962 279 1126 116 1310 252" fill="none" stroke="#0a2147" stroke-width="8" stroke-linecap="round" stroke-dasharray="3 17"/>
+  <path d="M112 455 C350 510 590 438 778 480 S1138 512 1320 442" fill="none" stroke="#315fe8" stroke-width="5" stroke-linecap="round" opacity=".5"/>
+  <path d="M1205 83l6 14 14 6-14 6-6 14-6-14-14-6 14-6z" fill="#ff725c"/>
+  <circle cx="1294" cy="95" r="6" fill="#8b73e8"/>
+  <circle cx="1118" cy="72" r="4" fill="#315fe8"/>
+
+  <g transform="translate(145 220) rotate(-4)">
+    <ellipse rx="75" ry="26" fill="none" stroke="#315fe8" stroke-width="5"/>
+    <circle r="55" fill="#dce7ff" class="planet"/>
+    <path d="M-21 0a21 21 0 1 0 42 0 21 21 0 1 0-42 0M0-21v42M-19-7h38M-19 8h38" class="icon"/>
+    <text x="0" y="91" text-anchor="middle" class="ink hand name">Local-first</text>
+    <text x="0" y="116" text-anchor="middle" class="hand note">stays on your machine</text>
   </g>
 
-  <g transform="translate(55 345) rotate(1)">
-    <rect width="400" height="150" rx="30" class="card"/>
-    <circle cx="62" cy="62" r="34" fill="#e0f5ec"/>
-    <path d="M62 39l22 9-3 23q-3 17-19 25-17-9-20-25l-2-23zM51 64l8 8 15-18" class="icon"/>
-    <text x="112" y="58" class="ink hand label">Fail closed</text>
-    <text x="112" y="90" class="hand note">uncertainty stays visible</text>
-    <path d="M113 101q88-8 177 0" fill="none" stroke="#35a77b" stroke-width="7" stroke-linecap="round" opacity=".45"/>
+  <g transform="translate(365 330) rotate(3)">
+    <circle r="55" fill="#eee8ff" class="planet"/>
+    <circle cx="0" cy="0" r="36" fill="none" stroke="#8b73e8" stroke-width="4" stroke-dasharray="4 8"/>
+    <path d="M-23 2l15 15 31-36" class="icon"/>
+    <text x="0" y="91" text-anchor="middle" class="ink hand name">Evidence-linked</text>
+    <text x="0" y="116" text-anchor="middle" class="hand note">shows the trail</text>
   </g>
-  <g transform="translate(500 345) rotate(-1)">
-    <rect width="400" height="150" rx="30" class="card"/>
-    <circle cx="62" cy="62" r="34" fill="#fff0c8"/>
-    <path d="M62 42v40M42 62h40M48 48l28 28" class="icon"/>
-    <text x="112" y="58" class="ink hand label">Explicit consent</text>
-    <text x="112" y="90" class="hand note">runtime tests ask first</text>
-    <path d="M113 101q89 9 183-1" fill="none" stroke="#f3ad29" stroke-width="7" stroke-linecap="round" opacity=".5"/>
+
+  <g transform="translate(585 185) rotate(-2)">
+    <circle r="55" fill="#ffe4de" class="planet"/>
+    <path d="M-22-25h44v50h-44zM-13-13h26M-13-2h19M-13 9h24" class="icon"/>
+    <path d="M-34-39l-8-11M34-39l8-11" stroke="#ff725c" stroke-width="4" stroke-linecap="round"/>
+    <text x="0" y="91" text-anchor="middle" class="ink hand name">Advisory-only</text>
+    <text x="0" y="116" text-anchor="middle" class="hand note">never rewrites</text>
   </g>
-  <g transform="translate(945 345) rotate(1)">
-    <rect width="400" height="150" rx="30" class="card"/>
-    <circle cx="62" cy="62" r="34" fill="#e8e4ff"/>
-    <path d="M45 43h34v40H45zM52 53h20M52 63h14M52 73h18" class="icon"/>
-    <text x="112" y="58" class="ink hand label">Portable reports</text>
-    <text x="112" y="90" class="hand note">one story, many formats</text>
-    <path d="M113 101q101-8 204 1" fill="none" stroke="#725bd3" stroke-width="7" stroke-linecap="round" opacity=".45"/>
+
+  <g transform="translate(810 335) rotate(2)">
+    <ellipse rx="76" ry="25" fill="none" stroke="#35a77b" stroke-width="5"/>
+    <circle r="55" fill="#e0f5ec" class="planet"/>
+    <path d="M0-30l27 11-4 28Q19 29 0 39-20 28-24 9l-3-28zM-15 1l11 11 21-25" class="icon"/>
+    <text x="0" y="91" text-anchor="middle" class="ink hand name">Fail closed</text>
+    <text x="0" y="116" text-anchor="middle" class="hand note">keeps limits visible</text>
+  </g>
+
+  <g transform="translate(1045 195) rotate(-3)">
+    <circle r="55" fill="#fff0c8" class="planet"/>
+    <path d="M0-29v58M-29 0h58M-20-20l40 40" class="icon"/>
+    <circle cx="0" cy="0" r="38" fill="none" stroke="#f3ad29" stroke-width="3" stroke-dasharray="2 9"/>
+    <text x="0" y="91" text-anchor="middle" class="ink hand name">Explicit consent</text>
+    <text x="0" y="116" text-anchor="middle" class="hand note">runtime asks first</text>
+  </g>
+
+  <g transform="translate(1270 310) rotate(3)">
+    <ellipse rx="76" ry="25" fill="none" stroke="#8b73e8" stroke-width="5"/>
+    <circle r="55" fill="#e8e4ff" class="planet"/>
+    <path d="M-23-27h46v54h-46zM-13-14h26M-13-3h19M-13 8h24" class="icon"/>
+    <text x="0" y="91" text-anchor="middle" class="ink hand name">Portable reports</text>
+    <text x="0" y="116" text-anchor="middle" class="hand note">many useful formats</text>
   </g>
 </svg>
