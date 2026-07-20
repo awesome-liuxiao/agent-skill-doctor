@@ -130,7 +130,7 @@ before enabling this path.
 
 ## Architecture
 
-![Agent Skill Doctor local architecture showing inputs, authenticated worker, diagnostic engines, encrypted evidence, and report formats](docs/assets/architecture.svg)
+![Agent Skill Doctor architecture showing skill files entering a local diagnostic core and leaving as portable reports](docs/assets/architecture.svg)
 
 The implementation is deliberately layered:
 
