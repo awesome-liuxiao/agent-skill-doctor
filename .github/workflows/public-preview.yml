@@ -1,0 +1,108 @@
+name: signed-public-preview
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_ref:
+        description: Existing preview tag; dispatch this workflow from the same tag
+        required: true
+        type: string
+      release_tag:
+        description: PEP 440 preview tag, for example v0.1.0a1
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+
+jobs:
+  validate:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            platform: windows
+          - os: macos-latest
+            platform: macos
+          - os: ubuntu-latest
+            platform: linux
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.release_ref }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Bind validation to the existing preview tag
+        run: >-
+          python scripts/verify_workflow_source.py
+          --release-ref "${{ inputs.release_ref }}"
+          --release-tag "${{ inputs.release_tag }}"
+          --require-preview-tag
+      - run: python -m pip install --requirement requirements-dev.lock
+      - run: ruff format --check .
+      - run: ruff check .
+      - run: mypy src tests scripts
+      - run: python -m pytest -q --junitxml=validation-${{ matrix.platform }}.xml
+      - name: Enforce public candidate gates
+        run: >-
+          python scripts/run_benchmark.py
+          --manifest benchmarks/public/v1/manifest.json
+          --causal benchmarks/public/v1/causal.json
+          --known-escapes security/known-sandbox-escapes.json
+          --junit validation-${{ matrix.platform }}.xml
+          --platform ${{ matrix.platform }}
+          --public-gate
+          --output public-benchmark-${{ matrix.platform }}.json
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: preview-validation-${{ matrix.platform }}
+          path: |
+            validation-${{ matrix.platform }}.xml
+            public-benchmark-${{ matrix.platform }}.json
+          if-no-files-found: error
+
+  package:
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.release_ref }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Bind packaging to the existing preview tag
+        run: >-
+          python scripts/verify_workflow_source.py
+          --release-ref "${{ inputs.release_ref }}"
+          --release-tag "${{ inputs.release_tag }}"
+          --require-preview-tag
+      - run: python -m pip install --requirement requirements-dev.lock
+      - name: Build wheel and source distribution
+        run: |
+          python -m pip wheel . --no-deps --wheel-dir dist
+          python -m hatchling build -t sdist
+      - uses: actions/attest-build-provenance@v3
+        with:
+          subject-path: dist/*
+      - uses: actions/upload-artifact@v6
+        with:
+          name: public-preview-package
+          path: dist/*
+          if-no-files-found: error
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.release_tag }}
+          target_commitish: ${{ inputs.release_ref }}
+          body_path: docs/PREVIEW_RELEASE_NOTES.md
+          prerelease: true
+          files: dist/*
+          fail_on_unmatched_files: true

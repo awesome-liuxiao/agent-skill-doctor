@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and design-partner feedback
+    url: https://github.com/awesome-liuxiao/agent-skill-doctor/discussions
+    about: Use Discussions for setup questions, open-ended ideas, and preview participation.
+  - name: Security report
+    url: https://github.com/awesome-liuxiao/agent-skill-doctor/security/advisories/new
+    about: Privately report containment, credential, signature, or report-content execution defects.

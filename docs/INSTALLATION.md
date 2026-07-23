@@ -1,5 +1,23 @@
 # Verified installation and updates
 
+## Python source preview
+
+The public alpha can be installed into an isolated Python 3.12 environment directly from an exact
+Git tag:
+
+```console
+uv tool install git+https://github.com/awesome-liuxiao/agent-skill-doctor.git@v0.1.0a1
+```
+
+```console
+pipx install git+https://github.com/awesome-liuxiao/agent-skill-doctor.git@v0.1.0a1
+```
+
+For evaluation before the first preview tag exists, replace the tag with `main`. A branch install is
+mutable and must not be treated as a reproducible deployment. The Python preview is distinct from
+the signed standalone bundles below: it does not claim the protected stable-release evidence or
+standalone artifact identity.
+
 ## Wrapper skills from GitHub
 
 The thin wrappers are repository-native Agent Skills and require explicit invocation:

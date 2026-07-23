@@ -4,12 +4,32 @@ build-backend = "hatchling.build"
 
 [project]
 name = "agent-skill-doctor"
-version = "0.1.0.dev0"
-description = "Local, advisory-only diagnostics for agent skills"
+version = "0.1.0a1"
+description = "Find broken and risky Codex or Claude Code skills locally"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 license = { file = "LICENSE" }
 authors = [{ name = "Agent Skill Doctor contributors" }]
+keywords = [
+    "agent-skills",
+    "ai-agents",
+    "claude-code",
+    "codex",
+    "developer-tools",
+    "security",
+    "static-analysis",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Software Development :: Testing",
+]
 dependencies = [
     "cryptography==49.0.0",
     "secretstorage==3.5.0; sys_platform == 'linux'",
@@ -17,6 +37,13 @@ dependencies = [
 
 [project.scripts]
 skill-doctor = "skill_doctor.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/awesome-liuxiao/agent-skill-doctor"
+Documentation = "https://github.com/awesome-liuxiao/agent-skill-doctor#readme"
+Issues = "https://github.com/awesome-liuxiao/agent-skill-doctor/issues"
+Changelog = "https://github.com/awesome-liuxiao/agent-skill-doctor/blob/main/CHANGELOG.md"
+Source = "https://github.com/awesome-liuxiao/agent-skill-doctor"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/skill_doctor"]

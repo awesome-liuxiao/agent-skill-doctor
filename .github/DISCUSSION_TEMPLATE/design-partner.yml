@@ -1,0 +1,36 @@
+title: "[Design partner] "
+labels: [design-partner]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for evaluating the static-analysis preview. Do not post private skills, prompts,
+        traces, credentials, customer names, or identifying absolute paths.
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Skill platform
+      options: [Codex, Claude Code, Both]
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Evaluation scope
+      description: Describe the number and general type of skills without identifying private repositories.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Sanitized outcome
+      description: Include rule IDs, correctness judgments, and completed/missing coverage only.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed private prompts, traces, credentials, customer data, and identifying paths.
+          required: true
